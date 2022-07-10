@@ -1,2 +1,2 @@
-# movie-theater-website
+# Movie Theater Website
 Final project for Advanced Java 4336.
