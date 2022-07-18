@@ -82,3 +82,9 @@ Submit to eLearning:
    3. Team.txt       lists team members (if a team, else omit)
    4. Screens.zip    clearly labeled screen shots of the project from beginning to ticket purchase.
    5. SQL.sql        SQL script to create and load database
+
+
+## Diagrams
+
+### Class Diagram
+![image](https://user-images.githubusercontent.com/68309836/179575947-57bb7207-2537-45e1-a36e-e26bfe595197.png)
