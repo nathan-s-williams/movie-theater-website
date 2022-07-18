@@ -88,3 +88,6 @@ Submit to eLearning:
 
 ### Class Diagram
 ![image](https://user-images.githubusercontent.com/68309836/179575947-57bb7207-2537-45e1-a36e-e26bfe595197.png)
+
+### Database Diagram
+![image](https://user-images.githubusercontent.com/68309836/179621738-91191cd4-d812-40f1-8f99-b90a66daac73.png)
