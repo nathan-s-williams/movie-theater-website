@@ -41,7 +41,7 @@ public class Showtimes implements Serializable {
     @MapsId("movieId")
     @JoinColumn(name="movieId")
     private Movie movie;
-
+    
     public Theater getTheater() {
         return theater;
     }
