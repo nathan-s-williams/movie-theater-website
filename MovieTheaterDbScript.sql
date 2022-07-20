@@ -11,25 +11,37 @@ INNER JOIN Theater t ON s.theaterId = t.theaterId
 */
 
 CREATE TABLE Movie (
-    movieId     CHAR(8)             PRIMARY KEY,
-    title       VARCHAR(100),
-    description VARCHAR(500)
+    movieId             CHAR(8)             PRIMARY KEY,
+    title               VARCHAR(100),
+    description         VARCHAR(500)
 );
 
 CREATE TABLE Theater (
-    theaterId   CHAR(8)             PRIMARY KEY,
-    theaterName VARCHAR(100),    
-    zipcode     INT
+    theaterId           CHAR(8)             PRIMARY KEY,
+    theaterName         VARCHAR(100),    
+    zipcode             INT
 );
 
 CREATE TABLE Showtimes (
-    theaterId   CHAR(8),
-    movieId     CHAR(8),
-    price       INT,
-    showtime    TIMESTAMP,
+    theaterId           CHAR(8),
+    movieId             CHAR(8),
+    price               INT,
+    showtime            TIMESTAMP,
     CONSTRAINT pk_showtimes PRIMARY KEY(theaterId, movieId),
     FOREIGN KEY(theaterId)  REFERENCES Theater,
     FOREIGN KEY(movieId)    REFERENCES Movie    
+);
+
+CREATE TABLE Payment (
+    theaterId           CHAR(8),
+    movieId             CHAR(8),
+    firstName           VARCHAR(100),
+    lastName            VARCHAR(100),
+    seatNumber          CHAR(3),
+    ticketsPurchased    INT,
+    creditcard          INT,
+    CONSTRAINT pk_payment PRIMARY KEY(theaterId, movieId, firstName, lastName, creditcard),
+    FOREIGN KEY(theaterId, movieId)  REFERENCES Showtimes
 );
 
 -- Movie data mined from themoviedb.org
