@@ -9,32 +9,17 @@ import javax.ejb.Stateless;
 
 
 @Stateless
-public class ClientValidator {
-
-    private static boolean isInteger(String s) {
-        try{
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException nfe) {
+public class ClientValidatorEJB {
+    
+    public static boolean validateZipcode(int zipcode) {
+        if(String.valueOf(zipcode).length() != 5)
             return false;
-        }
+        return true;
     }
     
-    public static boolean validateZipcode(String zipcode) {
-        boolean result = true;
-        if(zipcode.length() != 5)
-            result = false;
-        if(!isInteger(zipcode))
-            result = false;
-        return result;
-    }
-    
-    public static boolean validateCreditcard(String cc) {
-        boolean result = true;
-        if(cc.length() != 16)
-            result = false;
-        if(!isInteger(cc))
-            result = false;
-        return result;
+    public static boolean validateCreditcard(int cc) {
+        if(String.valueOf(cc).length() != 16)
+            return false;
+        return true;
     }
 }

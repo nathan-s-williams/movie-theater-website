@@ -12,12 +12,18 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author nate
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Showtimes.findAllShowtimesAndTheatersByMovie", query = "SELECT s FROM Showtimes s, Theater t WHERE s.showtimesPK.theaterId = t.theaterId AND s.showtimesPK.movieId = :movieId"),
+    @NamedQuery(name = "Showtimes.findAllShowtimesAndMoviesByTheater", query = "SELECT s FROM Showtimes s, Movie m WHERE s.showtimesPK.movieId = m.movieId AND s.showtimesPK.theaterId = :theaterId")
+})
 public class Showtimes implements Serializable {
 
     private static final long serialVersionUID = 1L;

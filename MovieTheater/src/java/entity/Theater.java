@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
+    @NamedQuery(name = "Theater.findAllTheaters", query = "SELECT t FROM Theater t"),
     @NamedQuery(name = "Theater.findByTheaterId", query = "Select t FROM Theater t WHERE t.theaterId = :theaterId"),
     @NamedQuery(name = "Theater.findByTheaterName", query = "Select t FROM Theater t WHERE t.theaterName = :theaterName"),
     @NamedQuery(name = "Theater.findByTheaterZipcode", query = "Select t FROM Theater t WHERE t.zipcode = :zipcode"),
