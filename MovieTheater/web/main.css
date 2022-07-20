@@ -1,0 +1,47 @@
+/*
+Main styling page for the MovieTheater website.
+    Created on : Jul 20, 2022, 1:39:45 PM
+    Author     : nate
+*/
+
+* {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.title-background {
+    background-image: linear-gradient(#00D8D8, #03C0C1, #009C9D);
+    height: 500px;
+    
+}
+
+.title {
+    font-size: 2vw;
+    color: white;
+    padding-top: 2%;
+    text-align: center;
+    width: 33%;
+    float: left;
+    clear: none;    
+    
+}
+
+.top-nav {
+    font-size: 1vw;
+    text-align: center;
+    word-spacing: 30px;
+    padding-top: 2.75%;
+    width: 67%;
+    float: right;
+    
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    word-spacing: 0;
+}
