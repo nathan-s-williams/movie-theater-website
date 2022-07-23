@@ -18,8 +18,10 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class PaymentEJB {
 
-    @PersistenceContext(unitName = "PaymentPU")
+    @PersistenceContext(unitName = "MovieTheaterPU")
     private EntityManager em;
+
+    
     
     public List<Payment> findAllPaymentsByTheaterIdAndMovieId(String theaterId, String movieId) {
         return em.createNamedQuery("Payment.findAllPaymentsByTheaterIdAndMovieId", Payment.class)
@@ -27,9 +29,10 @@ public class PaymentEJB {
                 .setParameter("movieId", movieId)
                 .getResultList();
     }
-    
-    //Method used to persist an object.
+
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    
 }

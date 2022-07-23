@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class MovieEJB {
 
-    @PersistenceContext(unitName = "MoviePU")
+    @PersistenceContext(unitName = "MovieTheaterPU")
     private EntityManager em;
     
     public List<Movie> findAllMovies(String movieId) {
@@ -49,9 +49,10 @@ public class MovieEJB {
                 .setParameter("movieId", movieId)
                 .getResultList();
     }
-    
-    //Method used to persist an object.
+
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    
 }

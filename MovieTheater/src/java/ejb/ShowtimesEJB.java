@@ -17,8 +17,10 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ShowtimesEJB {
 
-    @PersistenceContext(unitName = "ShowtimesPU")
+    @PersistenceContext(unitName = "MovieTheaterPU")
     private EntityManager em;
+
+    
     
     public List<Showtimes> findAllShowtimesAndTheatersByMovie(String movieId) {
         return em.createNamedQuery("Showtimes.findAllShowtimesAndTheatersByMovie", Showtimes.class)
@@ -31,9 +33,10 @@ public class ShowtimesEJB {
                 .setParameter("theaterId", theaterId)
                 .getResultList();
     }
-    
-    //Method used to persist an object.
+
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    
 }
