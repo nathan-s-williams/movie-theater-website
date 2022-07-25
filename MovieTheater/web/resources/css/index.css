@@ -51,7 +51,7 @@ body {
   justify-items: center;
 }
 .top-movie {
-    position: relative;
+    position: inherit;
     font-size: 150%;
     padding-top: 8%;
     text-align: center;
