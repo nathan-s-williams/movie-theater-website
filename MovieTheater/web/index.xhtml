@@ -10,14 +10,42 @@
     </head>
     <body>
         <div class="title-background">
-                <div class="title">Welcome to Javango</div>
-                <div class="top-nav">
-                    <a href="index.xhtml">Home</a>
-                    <a href="Theaters.xhtml">Theaters</a>
-                    <a href="Movies.xhtml">Movies</a>
-                    <a href="AboutUs.xhtml">About Us</a>
+            <div class="title">Welcome to Javango</div>
+            <div class="top-nav">
+                <a href="index.xhtml">Home</a>
+                <a href="Theaters.xhtml">Theaters</a>
+                <a href="Movies.xhtml">Movies</a>
+                <a href="AboutUs.xhtml">About Us</a>
+            </div>
+            <div><p class="top-movie">Top Movies Now Playing:</p></div>
+            <div><p class="movie-title" id="output-movie-title">Thor: Love and Thunder</p></div>
+
+            <div class="setup">
+            <input type="radio" name="position" checked="checked" value="Thor: Love and Thunder" onclick="movieTitle(this.value)"/>
+            <input type="radio" name="position" id="movie2" value="Movie 2 Title" onclick="movieTitle(this.value)"/>
+            <input type="radio" name="position" id="movie3" value="Movie 3 Title" onclick="movieTitle(this.value)"/>
+            <input type="radio" name="position" id="movie4" value="Movie 4 Title" onclick="movieTitle(this.value)"/>
+            <input type="radio" name="position" id="movie5" value="Movie 5 Title" onclick="movieTitle(this.value)"/>
+            <main id="carousel">
+                <div class="item">
+                    <img src="images/ThorLoveAndThunder.png"/>
                 </div>
+                <div class="item">
+                    <img src="images/DukeWaving.png"/>
+                </div>
+                <div class="item">
+                    <img src="images/DukeWaving.png"/>
+                </div>
+                <div class="item">
+                    <img src="images/DukeWaving.png"/>
+                </div>
+                <div class="item">
+                    <img src="images/DukeWaving.png"/>
+                </div>
+            </main>
+            </div>
         </div>
+        <script src="resources/javascript/script.js"></script>
     </body>
     <footer style="text-align: center">
         Advanced Java CS4336 Final Project<br />

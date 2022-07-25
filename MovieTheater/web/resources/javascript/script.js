@@ -9,5 +9,7 @@ const nav = document.getElementById("nav")
 const footer = document.getElementById("footer")
         .innerHTML='<div style="text-align: center">Advanced Java CS4336 Final Project<br />By Nathan Williams and Akito Minosoko</div>';
 
-
+function movieTitle(theMovieTitle) {
+                document.getElementById("output-movie-title").innerHTML= theMovieTitle
+}
 
