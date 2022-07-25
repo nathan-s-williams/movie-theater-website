@@ -6,14 +6,14 @@
 package bean;
 
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author nate
  */
 @Named(value = "theaterBean")
-@Dependent
+@RequestScoped
 public class TheaterBean {
 
     /**
