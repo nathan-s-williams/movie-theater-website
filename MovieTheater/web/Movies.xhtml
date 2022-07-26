@@ -28,13 +28,13 @@
                                 <f:facet name ="header">
                                     <h:outputText value="Movie Title" />
                                 </f:facet>
-                                <h:outputText value="#{movie.movieId}" />
+                                <h:outputText value="#{movie.title}" />
                             </h:column>
                             <h:column>
                                 <f:facet name ="header">
-                                    <h:outputText value="Movie Title" />
+                                    <h:outputText value="Description" />
                                 </f:facet>
-                                <h:outputText value="#{movie.title}" />
+                                <h:outputText value="#{movie.description}" />
                             </h:column>
                         </h:dataTable>
                     </h:form>
@@ -55,6 +55,12 @@
                                     <h:outputText value="Movie Title" />
                                 </f:facet>
                                 <h:outputText value="#{movie.title}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Description" />
+                                </f:facet>
+                                <h:outputText value="#{movie.description}" />
                             </h:column>
                         </h:dataTable>
                     </h:form>
