@@ -5,8 +5,14 @@
  */
 package bean;
 
+import ejb.MovieEJB;
+import entity.Movie;
+import java.util.List;
+import java.util.Map;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -16,10 +22,43 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class MovieBean {
 
-    /**
-     * Creates a new instance of MovieBean
-     */
-    public MovieBean() {
+    @EJB
+    private MovieEJB movieEJB;
+    private Movie movie = new Movie();
+    
+    public MovieBean() { }
+
+    public MovieEJB getMovieEJB() {
+        return movieEJB;
+    }
+
+    public void setMovieEJB(MovieEJB movieEJB) {
+        this.movieEJB = movieEJB;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+    
+    public List<Movie> getAllMovies() {
+        return movieEJB.findAllMovies();
+    }
+    
+    public List<Movie> getMoviesByTheater(String theaterId) {
+        return movieEJB.findMoviesByTheater(theaterId);
+    }
+    
+    public String showMoviesTheaters() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String, String> params = 
+                fc.getExternalContext().getRequestParameterMap();
+        this.movie.setMovieId(params.get("movieId"));
+        this.movie.setTitle(params.get("title"));
+        return "Theaters.xhtml";
     }
     
 }

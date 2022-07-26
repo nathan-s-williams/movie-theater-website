@@ -19,11 +19,9 @@ import javax.persistence.PersistenceContext;
 public class TheaterEJB {
 
     @PersistenceContext(unitName = "MovieTheaterPU")
-    private EntityManager em;
-
+    EntityManager em;
     
-    
-    public List<Theater> findAllTheaters(String movieId) {
+    public List<Theater> findAllTheaters() {
         return em.createNamedQuery("Theater.findAllTheaters", Theater.class)
                 .getResultList();
     }
@@ -48,15 +46,14 @@ public class TheaterEJB {
                 .getResultList();
     }
     
-    public List<Movie> findMoviesByTheater(String theaterId) {
-        return em.createNamedQuery("Theater.findMoviesByTheater", Movie.class)
-                .setParameter("theaterId", theaterId)
+    public List<Theater> findTheatersByMovie(String movieId) {
+        return em.createNamedQuery("Theater.findTheaterByMovie", Theater.class)
+                .setParameter("movieId", movieId)
                 .getResultList();
     }
 
     public void persist(Object object) {
         em.persist(object);
     }
-    
     
 }

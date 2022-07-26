@@ -21,7 +21,7 @@ public class MovieEJB {
     @PersistenceContext(unitName = "MovieTheaterPU")
     private EntityManager em;
     
-    public List<Movie> findAllMovies(String movieId) {
+    public List<Movie> findAllMovies() {
         return em.createNamedQuery("Movie.findAllMovies", Movie.class)
                 .getResultList();
     }
@@ -44,9 +44,9 @@ public class MovieEJB {
                 .getSingleResult();
     }
     
-    public List<Theater> findTheatersByMovie(String movieId) {
-        return em.createNamedQuery("Movie.findTheatersByMovie", Theater.class)
-                .setParameter("movieId", movieId)
+    public List<Movie> findMoviesByTheater(String theaterId) {
+        return em.createNamedQuery("Movie.findMoviesByTheater", Movie.class)
+                .setParameter("theaterId", theaterId)
                 .getResultList();
     }
 
