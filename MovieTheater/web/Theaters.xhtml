@@ -10,7 +10,7 @@
         <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
-        <div id="nav"></div>
+        <div id="nav" />
         <c:choose>
             <c:when test="${not empty movieBean.movie.movieId}">
                 Theaters Playing #{movieBean.movie.title}
@@ -102,7 +102,7 @@
                 </f:view>
             </c:otherwise>
         </c:choose>
-        <div id="footer"></div>
+        <div id="footer" />
     </h:body>
 </html>
 

@@ -10,9 +10,35 @@
         <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
-        <div id="nav"></div>
+        <div id="nav" />
         <c:choose>
-            <c:when test="${empty theaterBean.theater.theaterId}">
+            <c:when test="${not empty theaterBean.theater.theaterId}">
+                Movies Playing at #{theaterBean.theater.theaterName}
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Select" />
+                                </f:facet>
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Movie Title" />
+                                </f:facet>
+                                <h:outputText value="#{movie.title}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Description" />
+                                </f:facet>
+                                <h:outputText value="#{movie.description}" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </c:when>
+            <c:otherwise>
                 <f:view>
                     <h:form>
                         <h:dataTable value="#{movieBean.allMovies}" var="movie">
@@ -40,35 +66,9 @@
                         </h:dataTable>
                     </h:form>
                 </f:view>
-            </c:when>
-            <c:otherwise>
-                Movies Playing at #{theaterBean.theater.theaterName}
-                <f:view>
-                    <h:form>
-                        <h:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Movie Title" />
-                                </f:facet>
-                                <h:outputText value="#{movie.title}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Description" />
-                                </f:facet>
-                                <h:outputText value="#{movie.description}" />
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </f:view>
             </c:otherwise>
         </c:choose>
-        <div id="footer"></div>
+        <div id="footer" />
     </h:body>
 </html>
 
