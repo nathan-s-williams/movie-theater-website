@@ -11,14 +11,14 @@ import javax.ejb.Stateless;
 @Stateless
 public class ClientValidatorEJB {
     
-    public static boolean validateZipcode(int zipcode) {
+    public static boolean validateZipcode(String zipcode) {
         if(String.valueOf(zipcode).length() != 5)
             return false;
         return true;
     }
     
     public static boolean validateCreditcard(String cc) {
-        if(cc.length() != 16)
+        if(String.valueOf(cc).length() != 16)
             return false;
         return true;
     }

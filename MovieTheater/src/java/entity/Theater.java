@@ -29,7 +29,7 @@ public class Theater implements Serializable {
     @Id
     private String theaterId;
     private String theaterName;
-    private int zipcode;
+    private String zipcode;
 
     public String getTheaterId() {
         return theaterId;
@@ -47,14 +47,14 @@ public class Theater implements Serializable {
         this.theaterName = theaterName;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

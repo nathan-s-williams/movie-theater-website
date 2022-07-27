@@ -38,7 +38,7 @@ public class TheaterEJB {
                 .getSingleResult();
     }
     
-    public List<Theater> findByTheaterZipcode(int zipcode) {
+    public List<Theater> findByTheaterZipcode(String zipcode) {
         if(!ClientValidatorEJB.validateZipcode(zipcode))
             return null;
         return em.createNamedQuery("Theater.findByTheaterZipcode", Theater.class)

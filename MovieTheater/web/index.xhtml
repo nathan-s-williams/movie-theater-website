@@ -7,7 +7,7 @@
     <h:head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="resources/css/index.css" />
+        <h:outputStylesheet library="css" name="index.css" />
         <title>Javango</title>
     </h:head>
     <h:body>
@@ -20,9 +20,36 @@
                     <h:link value="AboutUs" outcome="AboutUs" />
                 </div>
         </div>
+        <h:form>
+            <p style="text-align: center">SEARCH THEATER</p>
+            <div class="zipcode-search-bar">
+                <span class="ui-input-icon-left">
+                    <i class="pi pi-search" />
+                    <p:inputText 
+                        id="zip"
+                        placeholder="Zipcode" 
+                        value="#{theaterBean.theater.zipcode}" 
+                        validator="#{indexBean.validateZipcode}" 
+                        validatorMessage="Please enter a 5 digit number."
+                    >
+                        <p:keyFilter mask="pint"/>
+                    </p:inputText>                  
+                </span>
+                <p:message for="zip" />
+            </div><br/>
+            <div style="text-align: center">
+                <p:commandButton 
+                    type="Submit" 
+                    value="Search" 
+                    action="Theaters.xhtml" 
+                    ajax="false" 
+                    update="@form"
+                />
+            </div>
+        </h:form><br/><br/>
     </h:body>
     <footer style="text-align: center">
-        Advanced Java CS4336 Final Project<br/>
+        Advanced Java CS4336 Final Project<br />
         By Nathan Williams and Akito Minosoko
     </footer>
 </html>

@@ -2,6 +2,7 @@
 DROP TABLE Movie;
 DROP TABLE Theater;
 DROP TABLE Showtimes;
+DROP TABLE Payment;
 
 Check tables:
 SELECT *
@@ -19,7 +20,7 @@ CREATE TABLE Movie (
 CREATE TABLE Theater (
     theaterId           CHAR(8)             PRIMARY KEY,
     theaterName         VARCHAR(100),    
-    zipcode             INT
+    zipcode             CHAR(5)
 );
 
 CREATE TABLE Showtimes (
@@ -39,7 +40,7 @@ CREATE TABLE Payment (
     lastName            VARCHAR(100),
     seatNumber          CHAR(3),
     ticketsPurchased    INT,
-    creditcard          INT,
+    creditcard          CHAR(16),
     CONSTRAINT pk_payment PRIMARY KEY(theaterId, movieId, firstName, lastName, creditcard),
     FOREIGN KEY(theaterId, movieId)  REFERENCES Showtimes
 );
@@ -49,9 +50,9 @@ INSERT INTO Movie VALUES('1','Thor: Love and Thunder','After his retirement is i
 INSERT INTO Movie VALUES('2','Lightyear','Legendary Space Ranger Buzz Lightyear embarks on an intergalactic adventure alongside a group of ambitious recruits and his robot companion Sox.');
 INSERT INTO Movie VALUES('3','Jurassic World Dominion','Four years after Isla Nublar was destroyed, dinosaurs now live—and hunt—alongside humans all over the world. This fragile balance will reshape the future and determine, once and for all, whether human beings are to remain the apex predators on a planet they now share with history’s most fearsome creatures.');
 
-INSERT INTO Theater VALUES('1','AMC DINE-IN Grapevine Mills 30',76051);
-INSERT INTO Theater VALUES('2','AMC DINE-IN Stonebriar 24',75034);
-INSERT INTO Theater VALUES('3','Alamo Drafthouse Cinema Richardson',75080);
+INSERT INTO Theater VALUES('1','AMC DINE-IN Grapevine Mills 30','76051');
+INSERT INTO Theater VALUES('2','AMC DINE-IN Stonebriar 24','75034');
+INSERT INTO Theater VALUES('3','Alamo Drafthouse Cinema Richardson','75080');
 
 INSERT INTO Showtimes VALUES('1','1',10,'2022-07-18 18:30:00');
 INSERT INTO Showtimes VALUES('1','2',10,'2022-07-18 20:00:00');
