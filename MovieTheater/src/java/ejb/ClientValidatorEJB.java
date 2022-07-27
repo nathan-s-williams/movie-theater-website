@@ -12,12 +12,12 @@ import javax.ejb.Stateless;
 public class ClientValidatorEJB {
     
     public static boolean validateZipcode(String zipcode) {
-        if(zipcode.length() != 5)
+        if(String.valueOf(zipcode).length() != 5)
             return false;
         return true;
     }
     
-    public static boolean validateCreditcard(int cc) {
+    public static boolean validateCreditcard(String cc) {
         if(String.valueOf(cc).length() != 16)
             return false;
         return true;
