@@ -6,7 +6,8 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Movies</title>
-        <link rel="stylesheet" href="resources/css/main.css" />
+        <h:outputStylesheet library="css" name="main.css" />
+        <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
         <div id="nav"></div>
@@ -68,7 +69,6 @@
             </c:otherwise>
         </c:choose>
         <div id="footer"></div>
-        <script src="resources/javascript/script.js"></script>
     </h:body>
 </html>
 
