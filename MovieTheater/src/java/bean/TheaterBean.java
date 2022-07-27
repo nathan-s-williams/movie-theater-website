@@ -61,4 +61,8 @@ public class TheaterBean {
         return "Movies.xhtml";
     }
     
+    public List<Theater> showTheaterByZipcode(String zipcode) {
+        return theaterEJB.findByTheaterZipcode(zipcode);
+    }
+    
 }

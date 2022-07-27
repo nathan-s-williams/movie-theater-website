@@ -11,8 +11,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class ClientValidatorEJB {
     
-    public static boolean validateZipcode(int zipcode) {
-        if(String.valueOf(zipcode).length() != 5)
+    public static boolean validateZipcode(String zipcode) {
+        if(zipcode.length() != 5)
             return false;
         return true;
     }
