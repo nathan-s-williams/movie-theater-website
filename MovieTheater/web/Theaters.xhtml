@@ -11,17 +11,48 @@
     <h:body>
         <div id="nav"></div>
         <c:choose>
-            <c:when test="${empty movieBean.movie.movieId}">
+            <c:when test="${not empty movieBean.movie.movieId}">
+                Theaters Playing #{movieBean.movie.title}
                 <f:view>
                     <h:form>
-                        <h:dataTable value="#{theaterBean.allTheaters}" var="theater">
+                        <h:dataTable value="#{theaterBean.getTheatersByMovie(movieBean.movie.movieId)}" var="theater">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Select" />
                                 </f:facet>
                                 <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
-                                    <f:param name="theaterId" value="#{theater.theaterId}" />
-                                    <f:param name="theaterName" value="#{theater.theaterName}" />
+<!--                                    <f:param name="theaterId" value="#{theater.theaterId}" />
+                                    <f:param name="theaterName" value="#{theater.theaterName}" />-->
+                                </h:commandButton>
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Zipcode" />
+                                </f:facet>
+                                <h:outputText value="#{theater.zipcode}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Theater" />
+                                </f:facet>
+                                <h:outputText value="#{theater.theaterName}" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </c:when>
+            <c:when test="${not empty theaterBean.theater.zipcode}">
+                Theaters at zipcode #{theaterBean.theater.zipcode}
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{theaterBean.showTheaterByZipcode(theaterBean.theater.zipcode)}" var="theater">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Select" />
+                                </f:facet>
+                                <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
+<!--                                    <f:param name="theaterId" value="#{theater.theaterId}" />
+                                    <f:param name="theaterName" value="#{theater.theaterName}" />-->
                                 </h:commandButton>
                             </h:column>
                             <h:column>
@@ -41,17 +72,16 @@
                 </f:view>
             </c:when>
             <c:otherwise>
-                Theaters Playing #{movieBean.movie.title}
                 <f:view>
                     <h:form>
-                        <h:dataTable value="#{theaterBean.getTheatersByMovie(movieBean.movie.movieId)}" var="theater">
+                        <h:dataTable value="#{theaterBean.allTheaters}" var="theater">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Select" />
                                 </f:facet>
                                 <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
-<!--                                    <f:param name="theaterId" value="#{theater.theaterId}" />
-                                    <f:param name="theaterName" value="#{theater.theaterName}" />-->
+                                    <f:param name="theaterId" value="#{theater.theaterId}" />
+                                    <f:param name="theaterName" value="#{theater.theaterName}" />
                                 </h:commandButton>
                             </h:column>
                             <h:column>
