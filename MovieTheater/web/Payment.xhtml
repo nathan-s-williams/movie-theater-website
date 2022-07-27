@@ -1,27 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
     <h:head>
         <title>Payment Page</title>
+        <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library = "js" name = "script.js" target="body"/>
     </h:head>
     <h:body>
         <h:form>
-        <h:outputLabel value="The chosen seats are: #{seatBean.stringSeatings}"/><br/>
-        <h:outputLabel value="The number of seats are: #{seatBean.numOfChosenSeats}" /><br/>
-        
-        <h:outputLabel value="Your total is $#{seatBean.calcTotal()}"/><br/><br/>
-        <h:outputLabel value="Please enter your credit card number: "/><br/>
-        <h:inputText 
-                     required="true" requiredMessage="You must enter a credit card number" /><br/><br/>
-        
-        <h:outputLabel value="Please enter the expiration date on the card: "/><br/>
-        <h:inputText value="" required="true" requiredMessage="You must enter the expiration date"
-                     maxlength="5">MM/YY</h:inputText><br/><br/>
-        
-        <h:outputLabel value="Please enter the expiration date on the card: "/><br/>
-        <h:inputText value="" required="true" requiredMessage="You must enter the expiration date"
-                     maxlength="3">CVV</h:inputText><br/><br/>
+            <div id="nav"></div>
+            <div>
+                <h:outputLabel value="The chosen seats are: #{seatBean.stringSeatings}"/> <br/>
+                <h:outputLabel value="The number of seats are: #{seatBean.numOfChosenSeats}" /><br/>
+
+                <h:outputLabel value="Your total is $#{seatBean.calcTotal()}"/><br/><br/>
+
+                <h:outputLabel value="Enter the first name on the card: "/><br/>
+                <p:inputText value="#{paymentBean.firstName}" required="true" /> <br/><br/>
+
+
+                <h:outputLabel value="Enter the last name on the card: "/><br/>
+                <p:inputText value="#{paymentBean.lastName}" required="true" /><br/><br/>
+
+                <h:outputLabel value="Please enter your credit card number: "/><br/>
+                <p:inputText value="#{paymentBean.cardNumber}" required = "true" validator="#{paymentBean.validateCardNumber}">
+                    <p:keyFilter mask="pint"/>
+                </p:inputText><br/><br/>
+
+                <h:outputLabel value="Please enter the expiration date on the card (MM/YY):"/><br/>
+                <p:inputText value="#{paymentBean.expDate}" maxlength="5" required="true"/><br/><br/>
+
+                <h:outputLabel value="Please enter the CVV on the card:"/><br/>
+                <p:inputText value="#{paymentBean.cvv}" required="true" maxlength="3"/><br/><br/>
+            </div>
+            <div>
+                <p:commandButton type="Submit" value="Confirm purchase" action="Receipt.xhtml" ajax="false"/>
+            </div>
         </h:form>
     </h:body>
 </html>

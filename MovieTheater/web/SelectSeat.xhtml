@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     
     <h:head>
         <title>Pick your seats</title>
-        <link rel="stylesheet" href="resources/css/main.css" />
-        <link rel="stylesheet" href="resources/css/seat.css" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputStylesheet library="css" name="seat.css"/>
+        <h:outputScript library = "js" name = "script.js" target="body"/>
     </h:head>
     <h:body>
         <h:form>
@@ -202,13 +204,11 @@
             </div>  
         </div>
         <div>
-            <h:commandButton class="purchase-button" value="Purchase selected seat(s)" action="Payment.xhtml">
-                <f:actionListener binding="#{seatBean.calcNumOfSeats()}" />
+            <p:commandButton class="purchase-button" type="Submit" value="Purchase selected seat(s)" action="#{seatBean.calcNumOfSeats()}" ajax="false">
                 <!-- Add a validator to see if there were purchased seats -->
-            </h:commandButton>
+            </p:commandButton>
         </div>
         </h:form>
-        <script src="resources/javascript/script.js"></script>
     </h:body>
 </html>
 

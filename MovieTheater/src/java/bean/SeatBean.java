@@ -48,21 +48,10 @@ public class SeatBean {
     
     public void setSeatings(String[] seatings) {
         for(int i = 0; i < seatings.length; i++) {
-            System.out.println(seatings[i]);
             tempString = tempString + seatings[i] + " ";
         }
         this.seatings = seatings;
         stringSeatings = tempString;
-        System.out.println(stringSeatings);
-    }
-    
-    public String testSeatings() {
-        System.out.println("Does it go to testSeatings()??");
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
-        String result =  params.get("theSelectedSeats"); 
-        stringSeatings = result;
-        return "TestSeating.xhtml";
     }
     
     
@@ -82,9 +71,11 @@ public class SeatBean {
         this.numOfChosenSeats = numOfChosenSeats;
     }
     
-    public void calcNumOfSeats() {
+    public String calcNumOfSeats() {
         int num = this.stringSeatings.length() - this.stringSeatings.replaceAll(" ", "").length();
         setNumOfChosenSeats(num);
+       
+        return "Payment.xhtml";
     }
     
     public int calcTotal() {
