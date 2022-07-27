@@ -20,19 +20,33 @@
                     <h:link value="AboutUs" outcome="AboutUs" />
                 </div>
         </div>
-        <p style="text-align: center">SEARCH THEATER</p>
-        <div class="zipcode-search-bar">
-            <span class="ui-input-icon-left">
-                <i class="pi pi-search" />
-                <p:inputText placeholder="Zipcode" validator="#{indexBean.validateZipcode}"/>
-            </span>
-        </div>
-        <br/>
-        <div style="text-align: center">
-            <p:commandButton type="button" value="Search" />
-        </div>
-        <br/>
-        <br/>
+        <h:form>
+            <p style="text-align: center">SEARCH THEATER</p>
+            <div class="zipcode-search-bar">
+                <span class="ui-input-icon-left">
+                    <i class="pi pi-search" />
+                    <p:inputText 
+                        id="zip"
+                        placeholder="Zipcode" 
+                        value="#{theaterBean.theater.zipcode}" 
+                        validator="#{indexBean.validateZipcode}" 
+                        validatorMessage="Please enter a number with 5 digits."
+                    >
+                        <p:keyFilter mask="pint"/>
+                    </p:inputText>                  
+                </span>
+                <p:message for="zip" />
+            </div><br/>
+            <div style="text-align: center">
+                <p:commandButton 
+                    type="Submit" 
+                    value="Search" 
+                    action="Theaters.xhtml" 
+                    ajax="false" 
+                    update="@form"
+                />
+            </div>
+        </h:form><br/><br/>
     </h:body>
     <footer style="text-align: center">
         Advanced Java CS4336 Final Project<br />

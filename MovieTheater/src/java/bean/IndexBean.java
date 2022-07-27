@@ -24,7 +24,7 @@ public class IndexBean {
     public IndexBean() { }
     
     public void validateZipcode(FacesContext fc, UIComponent uic, Object o) {
-        int zipcode = (int)o;
+        String zipcode = (String)o;
         if(!ClientValidatorEJB.validateZipcode(zipcode))
             ((UIInput) uic).setValid(false);
             FacesMessage message = new FacesMessage

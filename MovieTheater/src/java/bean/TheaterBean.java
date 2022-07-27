@@ -61,4 +61,6 @@ public class TheaterBean {
         return "Movies.xhtml";
     }
     
+    
+    
 }
