@@ -19,10 +19,9 @@
                     <h:link value="Movies" outcome="Movies" />
                     <h:link value="AboutUs" outcome="AboutUs" />
                 </div>
-                <div class="top-movies">Top Movies Now Playing:</div>
                 <div class="carousel">
                     <p:carousel value="#{carouselBean.movieList}" var="movie" numVisible="1" circular="true" 
-                                style="width: 1350px; height:425px">
+                                style="width: 1350px; height:575px">
                         <p:graphicImage name="images/DukeWaving.png"/>
                         <p class="movie-title">#{movie.title}</p>
                     </p:carousel>
