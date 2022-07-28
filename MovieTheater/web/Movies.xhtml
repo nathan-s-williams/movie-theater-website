@@ -12,60 +12,24 @@
     </h:head>
     <h:body>
         <div id="nav" />
-        <c:choose>
-            <c:when test="${not empty theaterBean.theater.theaterId}">
-                Movies Playing at #{theaterBean.theater.theaterName}
-                <f:view>
-                    <div class="card">
-                        <h:form>
-                            <p:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
-                                <p:column headerText="Select">
-                                    <p:commandButton type="Submit" value="Choose" action="#{showtimeBean.showShowtimes()}" ajax="false">
-                                        <f:param name="theaterId" value="#{theaterBean.theater.theaterId}"/>
-                                        <f:param name="movieId" value="#{movie.movieId}"/>
-                                    </p:commandButton>
-                                </p:column>
-                                <p:column headerText="Movie Title">
-                                    <h:outputText value="#{movie.title}" />
-                                </p:column>
-                                <p:column headerText="Description">
-                                    <h:outputText value="#{movie.description}" />
-                                </p:column>
-                            </p:dataTable>
-                        </h:form>
-                    </div>
-                </f:view>
-            </c:when>
-            <c:otherwise>
-                <f:view>
+        Movies Playing at #{movieTheaterBean.theater.theaterName}
+            <f:view>
+                <div class="card">
                     <h:form>
-                        <h:dataTable value="#{movieBean.allMovies}" var="movie">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                                <h:commandButton value="Select" action="#{movieBean.showMoviesTheaters()}">
-                                    <f:param name="movieId" value="${movie.movieId}" />
-                                    <f:param name="title" value="${movie.title}" />
-                                </h:commandButton>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Movie Title" />
-                                </f:facet>
+                        <p:dataTable value="#{movieTheaterBean.showMoviesByTheater()}" var="movie">
+                            <p:column headerText="Select">
+                                <p:commandButton value="Select" action="#{movieTheaterBean.getShowtimesByMovie(movie.movieId)}" ajax="false" />
+                            </p:column>
+                            <p:column headerText="Movie Title">
                                 <h:outputText value="#{movie.title}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Description" />
-                                </f:facet>
+                            </p:column>
+                            <p:column headerText="Description">
                                 <h:outputText value="#{movie.description}" />
-                            </h:column>
-                        </h:dataTable>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
-                </f:view>
-            </c:otherwise>
-        </c:choose>
+                </div>
+            </f:view>
         <div id="footer" />
     </h:body>
 </html>

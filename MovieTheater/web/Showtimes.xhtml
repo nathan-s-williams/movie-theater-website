@@ -14,9 +14,10 @@
         <f:view>
             <h:form>
                 <p:dataTable 
-                    value="#{showtimeBean.getShowtimes(showtimeBean.theater.theaterId, showtimeBean.movie.movieId)}" 
-                    var="showtime"
-                >
+                    value="#{movieTheaterBean.showShowtimesByMovie()}" var="showtime">
+<!--                    <p:column headerText="Select">
+                        <p:commandButton value="Select" action="" ajax="false" />
+                    </p:column>-->
                     <p:column headerText="Showtime">
                         <h:outputText value="#{showtime.showtime}" />
                     </p:column>

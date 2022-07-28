@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Theaters</title>
         <h:outputStylesheet library="css" name="main.css" />
@@ -11,97 +12,21 @@
     </h:head>
     <h:body>
         <div id="nav" />
-        <c:choose>
-            <c:when test="${not empty movieBean.movie.movieId}">
-                Theaters Playing #{movieBean.movie.title}
-                <f:view>
-                    <h:form>
-                        <h:dataTable value="#{theaterBean.getTheatersByMovie(movieBean.movie.movieId)}" var="theater">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                                <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
-<!--                                    <f:param name="theaterId" value="#{theater.theaterId}" />
-                                    <f:param name="theaterName" value="#{theater.theaterName}" />-->
-                                </h:commandButton>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Zipcode" />
-                                </f:facet>
-                                <h:outputText value="#{theater.zipcode}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Theater" />
-                                </f:facet>
-                                <h:outputText value="#{theater.theaterName}" />
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </f:view>
-            </c:when>
-            <c:when test="${not empty theaterBean.theater.zipcode}">
-                Theaters at zipcode #{theaterBean.theater.zipcode}
-                <f:view>
-                    <h:form>
-                        <h:dataTable value="#{theaterBean.showTheaterByZipcode(theaterBean.theater.zipcode)}" var="theater">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                                <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
-<!--                                    <f:param name="theaterId" value="#{theater.theaterId}" />
-                                    <f:param name="theaterName" value="#{theater.theaterName}" />-->
-                                </h:commandButton>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Zipcode" />
-                                </f:facet>
-                                <h:outputText value="#{theater.zipcode}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Theater" />
-                                </f:facet>
-                                <h:outputText value="#{theater.theaterName}" />
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </f:view>
-            </c:when>
-            <c:otherwise>
-                <f:view>
-                    <h:form>
-                        <h:dataTable value="#{theaterBean.allTheaters}" var="theater">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                                <h:commandButton value="Select" action="#{theaterBean.showTheatersMovies()}">
-                                    <f:param name="theaterId" value="#{theater.theaterId}" />
-                                    <f:param name="theaterName" value="#{theater.theaterName}" />
-                                </h:commandButton>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Zipcode" />
-                                </f:facet>
-                                <h:outputText value="#{theater.zipcode}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Theater" />
-                                </f:facet>
-                                <h:outputText value="#{theater.theaterName}" />
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </f:view>
-            </c:otherwise>
-        </c:choose>
+        Theaters in zipcode #{movieTheaterBean.theater.zipcode}
+        <div class="card">    
+            <f:view>
+                <h:form>
+                    <p:dataTable value="#{movieTheaterBean.showTheatersByZipcode(movieTheaterBean.theater.zipcode)}" var="theater">
+                        <p:column headerText="Select">
+                            <p:commandButton value="Select" action="#{movieTheaterBean.getMoviesByTheater(theater.theaterId)}" ajax="false" />
+                        </p:column>
+                        <p:column headerText="Theater">
+                            <h:outputText value="#{theater.theaterName}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </f:view>
+        </div>
         <div id="footer" />
     </h:body>
 </html>
