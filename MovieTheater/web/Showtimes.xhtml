@@ -15,9 +15,9 @@
             <h:form>
                 <p:dataTable 
                     value="#{movieTheaterBean.showShowtimesByMovie()}" var="showtime">
-<!--                    <p:column headerText="Select">
-                        <p:commandButton value="Select" action="" ajax="false" />
-                    </p:column>-->
+                    <p:column headerText="Select">
+                        <p:commandButton value="Select" action="#{movieTheaterBean.getSelectSeat(showtime.showtime)}" ajax="false" />
+                    </p:column>
                     <p:column headerText="Showtime">
                         <h:outputText value="#{showtime.showtime}" />
                     </p:column>

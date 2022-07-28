@@ -17,7 +17,6 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -40,6 +39,12 @@ public class MovieTheaterBean implements Serializable {
     private ClientValidatorEJB clientValidatorEJB;
     private Theater theater = new Theater();
     private Movie movie = new Movie();
+    private Showtimes showtimes;
+    List<String> Listseatings;
+    String[] seatings = new String[8];
+    String stringSeatings;
+    String tempString = "";
+    int numOfChosenSeats;
     
     public MovieTheaterBean() { }
 
@@ -98,6 +103,58 @@ public class MovieTheaterBean implements Serializable {
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
+
+    public Showtimes getShowtimes() {
+        return showtimes;
+    }
+
+    public void setShowtimes(Showtimes showtimes) {
+        this.showtimes = showtimes;
+    }
+
+    public List<String> getListseatings() {
+        return Listseatings;
+    }
+
+    public void setListseatings(List<String> Listseatings) {
+        this.Listseatings = Listseatings;
+    }
+
+    public String getTempString() {
+        return tempString;
+    }
+
+    public void setTempString(String tempString) {
+        this.tempString = tempString;
+    }
+    
+    public String[] getSeatings () {
+        return seatings;
+    }
+    
+    public void setSeatings(String[] seatings) {
+        for(int i = 0; i < seatings.length; i++) {
+            tempString = tempString + seatings[i] + " ";
+        }
+        this.seatings = seatings;
+        stringSeatings = tempString;
+    }
+    
+    public String getStringSeatings() {
+        return stringSeatings; 
+    }
+    
+    public void setStringSeatings(String stringSeatings) {
+        this.stringSeatings = stringSeatings;
+    }
+
+    public int getNumOfChosenSeats() {
+        return numOfChosenSeats;
+    }
+
+    public void setNumOfChosenSeats(int numOfChosenSeats) {
+        this.numOfChosenSeats = numOfChosenSeats;
+    }
     
     public void validateZipcode(FacesContext fc, UIComponent uic, Object o) {
         String zipcode = (String)o;
@@ -146,6 +203,25 @@ public class MovieTheaterBean implements Serializable {
         return showtimesEJB.findShowtimes(theater.getTheaterId(), movie.getMovieId());
     }
     
+    public String getSelectSeat(java.util.Date date) {
+        this.showtimes = showtimesEJB.
+                findShowtimesWithDate(theater.getTheaterId(), movie.getMovieId(), date);
+        return "SelectSeat.xhtml";
+    }
     
+    /**************
+    SelectSeats.xhtml
+    **************/
+    
+    public String calcNumOfSeats() {
+        int num = this.stringSeatings.length() - this.stringSeatings.replaceAll(" ", "").length();
+        setNumOfChosenSeats(num);
+       
+        return "Payment.xhtml";
+    }
+    
+    public int calcTotal() {
+        return numOfChosenSeats * 10;
+    }
     
 }

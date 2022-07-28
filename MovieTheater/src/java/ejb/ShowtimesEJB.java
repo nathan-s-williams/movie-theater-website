@@ -41,6 +41,14 @@ public class ShowtimesEJB {
                 .getResultList();
     }
     
+    public Showtimes findShowtimesWithDate(String theaterId, String movieId, java.util.Date showtime) {
+        return em.createNamedQuery("Showtimes.findShowtimesWithDate", Showtimes.class)
+                .setParameter("theaterId", theaterId)
+                .setParameter("movieId", movieId)
+                .setParameter("showtime", showtime)
+                .getSingleResult();
+    }
+    
     public void persist(Object object) {
         em.persist(object);
     }

@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 24, 2022, 11:14:17 PM
+    Author     : minosokoa
+*/
+.screen {
+    font-size: 200%;
+    text-align: center;
+}
+
+.seating {
+    position:relative;
+    top: 90px;
+    display:grid;
+    gap: 50px;
+    padding: 0;
+    row-gap: 10px;
+    grid-template-area: 'left-seats middle-seats right-seats';
+    
+}
+
+.left-seats {
+    display:grid;
+    gap: 15px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    column-count: 3;
+}
+
+.middle-seats {
+    display: grid;
+    gap: 15px;
+    grid-column-start: 3;
+    grid-column-end: 7;
+    column-count: 10;
+    
+}
+
+.right-seats {
+    display: grid;
+    gap: 15px;
+    grid-column-start: 8;
+    grid-column-end: 9;
+    column-count: 3;
+}
+
+.seating input {
+    
+    height:65px;
+    width:65px;
+    
+}
+
+.purchase-button {
+    position: absolute;
+    bottom: -95px;
+    
+}
+
+

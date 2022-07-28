@@ -23,7 +23,8 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name = "Showtimes.findAllShowtimesAndTheatersByMovie", query = "SELECT s FROM Showtimes s, Theater t WHERE s.showtimesPK.theaterId = t.theaterId AND s.showtimesPK.movieId = :movieId"),
     @NamedQuery(name = "Showtimes.findAllShowtimesAndMoviesByTheater", query = "SELECT s FROM Showtimes s, Movie m WHERE s.showtimesPK.movieId = m.movieId AND s.showtimesPK.theaterId = :theaterId"),
-    @NamedQuery(name = "Showtimes.findShowtimes", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId")
+    @NamedQuery(name = "Showtimes.findShowtimes", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId"),
+    @NamedQuery(name = "Showtimes.findShowtimesWithDate", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId AND s.showtime = :showtime")
 })
 public class Showtimes implements Serializable {
 
