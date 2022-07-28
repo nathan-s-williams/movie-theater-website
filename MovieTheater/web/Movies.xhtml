@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Movies</title>
         <h:outputStylesheet library="css" name="main.css" />
@@ -15,27 +16,24 @@
             <c:when test="${not empty theaterBean.theater.theaterId}">
                 Movies Playing at #{theaterBean.theater.theaterName}
                 <f:view>
-                    <h:form>
-                        <h:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Select" />
-                                </f:facet>
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Movie Title" />
-                                </f:facet>
-                                <h:outputText value="#{movie.title}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name ="header">
-                                    <h:outputText value="Description" />
-                                </f:facet>
-                                <h:outputText value="#{movie.description}" />
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
+                    <div class="card">
+                        <h:form>
+                            <p:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
+                                <p:column headerText="Select">
+                                    <p:commandButton type="Submit" value="Choose" action="#{showtimeBean.showShowtimes()}" ajax="false">
+                                        <f:param name="theaterId" value="#{theaterBean.theater.theaterId}"/>
+                                        <f:param name="movieId" value="#{movie.movieId}"/>
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column headerText="Movie Title">
+                                    <h:outputText value="#{movie.title}" />
+                                </p:column>
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{movie.description}" />
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
                 </f:view>
             </c:when>
             <c:otherwise>

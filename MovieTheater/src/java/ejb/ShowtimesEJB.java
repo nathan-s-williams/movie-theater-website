@@ -33,7 +33,14 @@ public class ShowtimesEJB {
                 .setParameter("theaterId", theaterId)
                 .getResultList();
     }
-
+    
+    public List<Showtimes> findShowtimes(String theaterId, String movieId) {
+        return em.createNamedQuery("Showtimes.findShowtimes", Showtimes.class)
+                .setParameter("theaterId", theaterId)
+                .setParameter("movieId", movieId)
+                .getResultList();
+    }
+    
     public void persist(Object object) {
         em.persist(object);
     }
