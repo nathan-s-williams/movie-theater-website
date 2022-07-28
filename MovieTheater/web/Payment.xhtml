@@ -13,10 +13,10 @@
         <h:form>
             <div id="nav"></div>
             <div>
-                <h:outputLabel value="The chosen seats are: #{seatBean.stringSeatings}"/> <br/>
-                <h:outputLabel value="The number of seats are: #{seatBean.numOfChosenSeats}" /><br/>
+                <h:outputLabel value="The chosen seats are: #{movieTheaterBean.stringSeatings}"/> <br/>
+                <h:outputLabel value="The number of seats are: #{movieTheaterBean.numOfChosenSeats}" /><br/>
 
-                <h:outputLabel value="Your total is $#{seatBean.calcTotal()}"/><br/><br/>
+                <h:outputLabel value="Your total is $#{movieTheaterBean.calcTotal()}"/><br/><br/>
 
                 <h:outputLabel value="Enter the first name on the card: "/><br/>
                 <p:inputText value="#{paymentBean.firstName}" required="true" /> <br/><br/>

@@ -13,6 +13,7 @@ import ejb.TheaterEJB;
 import entity.Movie;
 import entity.Showtimes;
 import entity.Theater;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -214,14 +215,19 @@ public class MovieTheaterBean implements Serializable {
     **************/
     
     public String calcNumOfSeats() {
-        int num = this.stringSeatings.length() - this.stringSeatings.replaceAll(" ", "").length();
-        setNumOfChosenSeats(num);
-       
+        setNumOfChosenSeats(
+                this.stringSeatings.length() - this.stringSeatings.replaceAll(" ", "").length()
+        );
         return "Payment.xhtml";
     }
     
     public int calcTotal() {
         return numOfChosenSeats * 10;
+    }
+    
+    public void closeBean() throws IOException {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.getExternalContext().invalidateSession();
     }
     
 }
