@@ -28,9 +28,46 @@
                             </p:column>
                         </p:dataTable>
                     </h:form>
+<<<<<<< HEAD
                 </div>
             </f:view>
         <div id="footer" />
+=======
+                </f:view>
+            </c:when>
+            <c:otherwise>
+                Movies Playing at #{theaterBean.theater.theaterName}
+                <f:view>
+                    <h:form>
+                        <h:dataTable value="#{movieBean.getMoviesByTheater(theaterBean.theater.theaterId)}" var="movie">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Select" />
+                                </f:facet>
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Movie Title" />
+                                </f:facet>
+                                <h:outputText value="#{movie.title}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name ="header">
+                                    <h:outputText value="Description" />
+                                </f:facet>
+                                <h:outputText value="#{movie.description}" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+            </c:otherwise>
+        </c:choose>
+        <div id="footer"></div>
+<<<<<<< HEAD
+        <script src="resources/js/script.js"></script>
+=======
+>>>>>>> master
+>>>>>>> 27-mainpagecarousel
     </h:body>
 </html>
 

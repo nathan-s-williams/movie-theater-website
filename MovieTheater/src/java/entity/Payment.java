@@ -27,6 +27,30 @@ public class Payment implements Serializable {
     private String seatNumber;
     private int ticketsPurchased;
 
+    public PaymentPK getPaymentPK() {
+        return paymentPK;
+    }
+
+    public void setPaymentPK(PaymentPK paymentPK) {
+        this.paymentPK = paymentPK;
+    }
+
+    public String getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public int getTicketsPurchased() {
+        return ticketsPurchased;
+    }
+
+    public void setTicketsPurchased(int ticketsPurchased) {
+        this.ticketsPurchased = ticketsPurchased;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
