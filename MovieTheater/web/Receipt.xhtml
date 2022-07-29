@@ -10,35 +10,36 @@
     </h:head>
     <h:body>
         <div id="nav" />
-        <div class="card" style="text-align: center">
+        <div class="card center">
             <h:form>
-                <h4>Thank you for your purchase!</h4><br/>
-                <h4>Your receipt:</h4>
-                <h:panelGrid columns="2" cellpadding="7" cellspacing="10">
+                <p style="font-size: 1.5vw; text-align: center">Thank you for your purchase!</p>
+                <p style="font-size: 1.5vw; text-align: center">Your receipt:</p>
+                <h:panelGrid style="margin: 0 auto; width: 400px" columns="2" cellpadding="7" cellspacing="10">
                     <p:outputLabel value="Full Name:" />
                     <p:outputLabel value="#{paymentBean.firstName} #{paymentBean.lastName}" />
-                    
+
                     <p:outputLabel value="Theater:" />
                     <p:outputLabel value="#{movieTheaterBean.theater.theaterName}" />
-                    
+
                     <p:outputLabel value="Movie:" />
                     <p:outputLabel value="#{movieTheaterBean.movie.title}" />
-                    
+
                     <p:outputLabel value="Showtime:" />
                     <p:outputLabel value="#{movieTheaterBean.showtimes.showtime}" />
-                    
+
                     <p:outputLabel value="Credit Card:" />
                     <p:outputLabel value="#{paymentBean.cardNumber}" />
-                    
+
                     <p:outputLabel value="Expiration:" />
                     <p:outputLabel value="#{paymentBean.expDate}" />
-                    
+
                     <p:outputLabel value="CSV:" />
                     <p:outputLabel value="#{paymentBean.cvv}" />
-                    
+                </h:panelGrid>
+                <hr style="width: 400px" />
+                <h:panelGrid style="margin: 0 auto; width: 400px" columns="2" cellpadding="0" cellspacing="10" columnClasses="receipt-total-label-ui-grid">
                     <p:outputLabel value="Total:" />
                     <p:outputLabel value="$#{movieTheaterBean.calcTotal()}" />
-                    
                 </h:panelGrid>
             </h:form>
         </div>
