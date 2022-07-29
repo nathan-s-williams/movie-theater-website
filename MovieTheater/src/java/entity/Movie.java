@@ -30,6 +30,7 @@ public class Movie implements Serializable {
     private String movieId;
     private String title;
     private String description;
+    private String image;
 
     public String getMovieId() {
         return movieId;
@@ -53,6 +54,14 @@ public class Movie implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     @Override
