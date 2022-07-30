@@ -7,7 +7,6 @@ package bean;
 
 import ejb.ClientValidatorEJB;
 import ejb.MovieEJB;
-import ejb.PaymentEJB;
 import ejb.ShowtimesEJB;
 import ejb.TheaterEJB;
 import entity.Movie;
@@ -32,8 +31,6 @@ public class MovieTheaterBean implements Serializable {
     private TheaterEJB theaterEJB;
     @EJB
     private ShowtimesEJB showtimesEJB;
-    @EJB
-    private PaymentEJB paymentEJB;
     @EJB
     private MovieEJB movieEJB;
     @EJB
@@ -63,14 +60,6 @@ public class MovieTheaterBean implements Serializable {
 
     public void setShowtimesEJB(ShowtimesEJB showtimesEJB) {
         this.showtimesEJB = showtimesEJB;
-    }
-
-    public PaymentEJB getPaymentEJB() {
-        return paymentEJB;
-    }
-
-    public void setPaymentEJB(PaymentEJB paymentEJB) {
-        this.paymentEJB = paymentEJB;
     }
 
     public MovieEJB getMovieEJB() {
