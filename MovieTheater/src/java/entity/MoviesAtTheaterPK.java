@@ -6,9 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -16,46 +14,19 @@ import javax.validation.constraints.NotNull;
  * @author nate
  */
 @Embeddable
-public class ShowtimesPK implements Serializable {
+public class MoviesAtTheaterPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @NotNull
     private String theaterId;
     @NotNull
     private String movieId;
-    @NotNull
-    private java.util.Date showtime;
 
-    public ShowtimesPK() { }
+    public MoviesAtTheaterPK() { }
 
-    public String getTheaterId() {
-        return theaterId;
-    }
-
-    public void setTheaterId(String theaterId) {
-        this.theaterId = theaterId;
-    }
-
-    public String getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
-
-    public Date getShowtime() {
-        return showtime;
-    }
-
-    public void setShowtime(Date showtime) {
-        this.showtime = showtime;
-    }
-    
-    public ShowtimesPK(String theaterId, String movieId, Date showtime) {
+    public MoviesAtTheaterPK(String theaterId, String movieId) {
         this.theaterId = theaterId;
         this.movieId = movieId;
-        this.showtime = showtime;
     }
 
     @Override
@@ -63,24 +34,20 @@ public class ShowtimesPK implements Serializable {
         int hash = 0;
         hash += (theaterId != null ? theaterId.hashCode() : 0);
         hash += (movieId != null ? movieId.hashCode() : 0);
-        hash += (showtime != null ? showtime.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ShowtimesPK)) {
+        if (!(object instanceof MoviesAtTheaterPK)) {
             return false;
         }
-        ShowtimesPK other = (ShowtimesPK) object;
+        MoviesAtTheaterPK other = (MoviesAtTheaterPK) object;
         if ((this.theaterId == null && other.theaterId != null) || (this.theaterId != null && !this.theaterId.equals(other.theaterId))) {
             return false;
         }
         if ((this.movieId == null && other.movieId != null) || (this.movieId != null && !this.movieId.equals(other.movieId))) {
-            return false;
-        }
-        if ((this.showtime == null && other.showtime != null) || (this.showtime != null && !this.showtime.equals(other.showtime))) {
             return false;
         }
         return true;
@@ -88,7 +55,7 @@ public class ShowtimesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ShowtimesPK[ theaterId=" + theaterId + " and movieId=" + movieId + " and showtime=" + showtime + " ]";
+        return "entity.ShowtimesPK[ theaterId=" + theaterId + " and movieId=" + movieId + " ]";
     }
     
 }

@@ -32,18 +32,6 @@ public class MovieEJB {
                 .getSingleResult();
     }
     
-    public Movie findByTitle(String name) {
-        return em.createNamedQuery("Movie.findByTitle", Movie.class)
-                .setParameter("title", name)
-                .getSingleResult();
-    }
-    
-    public Movie findByDescription(String description) {
-        return em.createNamedQuery("Movie.findByDescription", Movie.class)
-                .setParameter("description", description)
-                .getSingleResult();
-    }
-    
     public List<Movie> findMoviesByTheater(String theaterId) {
         return em.createNamedQuery("Movie.findMoviesByTheater", Movie.class)
                 .setParameter("theaterId", theaterId)

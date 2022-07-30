@@ -10,6 +10,7 @@ import ejb.MovieEJB;
 import ejb.ShowtimesEJB;
 import ejb.TheaterEJB;
 import entity.Movie;
+import entity.MoviesAtTheater;
 import entity.Showtimes;
 import entity.Theater;
 import java.io.IOException;
