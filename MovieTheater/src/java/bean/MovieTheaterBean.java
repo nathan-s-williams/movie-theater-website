@@ -38,7 +38,7 @@ public class MovieTheaterBean implements Serializable {
     private ClientValidatorEJB clientValidatorEJB;
     private Theater theater = new Theater();
     private Movie movie = new Movie();
-    private Showtimes showtimes;
+    private Showtimes showtimes = new Showtimes();
     List<String> Listseatings;
     String[] seatings = new String[8];
     String stringSeatings;

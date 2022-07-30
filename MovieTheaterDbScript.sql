@@ -14,7 +14,8 @@ INNER JOIN Theater t ON s.theaterId = t.theaterId
 CREATE TABLE Movie (
     movieId             CHAR(8)             PRIMARY KEY,
     title               VARCHAR(100),
-    description         VARCHAR(500)
+    description         VARCHAR(500),
+    image               VARCHAR(100)
 );
 
 CREATE TABLE Theater (
@@ -404,14 +405,14 @@ INSERT INTO Theater VALUES ('359','Studio Movie Grill at 75398','75398');
 INSERT INTO Theater VALUES ('360','Cinemark at 75398','75398');
 
 --Movies
-INSERT INTO Movie VALUES ('1','DC League of Super Pets','Krypto the Super-Dog and Superman are inseparable best friends, sharing the same superpowers and fighting crime side by side in Metropolis. However, Krypto must master his own powers for a rescue mission when Superman is kidnapped.');
-INSERT INTO Movie VALUES ('2','Nope','The residents of a lonely gulch in inland California bear witness to an uncanny and chilling discovery.');
-INSERT INTO Movie VALUES ('3','Where the Crawdads Sing','A woman who raised herself in the marshes of the deep South becomes a suspect in the murder of a man she was once involved with.');
-INSERT INTO Movie VALUES ('4','Thor: Love and Thunder','After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now inexplicably wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.');
-INSERT INTO Movie VALUES ('5','Minions: The Rise of Gru','The untold story of one twelve-year-old''s dream to become the world''s greatest supervillain.');
-INSERT INTO Movie VALUES ('6','Top Gun Maverick','After more than thirty years of service as one of the Navy''s top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.');
-INSERT INTO Movie VALUES ('7','Jurassic World Dominion','Four years after the destruction of Isla Nublar, dinosaurs now live--and hunt--alongside humans all over the world. This fragile balance will reshape the future and determine, once and for all, whether human beings are to remain the apex predators on a planet they now share with history''s most fearsome creatures in a new Era.');
-INSERT INTO Movie VALUES ('8','Everything Everywhere All at Once','An aging Chinese immigrant is swept up in an insane adventure, where she alone can save the world by exploring other universes connecting with the lives she could have led.');
+INSERT INTO Movie VALUES ('1','DC League of Super Pets','Krypto the Super-Dog and Superman are inseparable best friends, sharing the same superpowers and fighting crime side by side in Metropolis. However, Krypto must master his own powers for a rescue mission when Superman is kidnapped.','LeagueOfSuperPets.jpeg');
+INSERT INTO Movie VALUES ('2','Nope','The residents of a lonely gulch in inland California bear witness to an uncanny and chilling discovery.','Nope.jpeg');
+INSERT INTO Movie VALUES ('3','Where the Crawdads Sing','A woman who raised herself in the marshes of the deep South becomes a suspect in the murder of a man she was once involved with.','WhereTheCrawdadsSing.jpeg');
+INSERT INTO Movie VALUES ('4','Thor: Love and Thunder','After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now inexplicably wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.','ThorLoveAndThunder.jpeg');
+INSERT INTO Movie VALUES ('5','Minions: The Rise of Gru','The untold story of one twelve-year-old''s dream to become the world''s greatest supervillain.','MinionsTheRiseOfGru.jpeg');
+INSERT INTO Movie VALUES ('6','Top Gun Maverick','After more than thirty years of service as one of the Navy''s top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.','TopGunMaverick.jpeg');
+INSERT INTO Movie VALUES ('7','Jurassic World Dominion','Four years after the destruction of Isla Nublar, dinosaurs now live--and hunt--alongside humans all over the world. This fragile balance will reshape the future and determine, once and for all, whether human beings are to remain the apex predators on a planet they now share with history''s most fearsome creatures in a new Era.','JurassicWorldDominion.png');
+INSERT INTO Movie VALUES ('8','Everything Everywhere All at Once','An aging Chinese immigrant is swept up in an insane adventure, where she alone can save the world by exploring other universes connecting with the lives she could have led.','EverythingEverywhereAllAtOnce.jpeg');
 
 --MoviesAtTheater
 INSERT INTO MoviesAtTheater VALUES ('1','1');
