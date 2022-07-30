@@ -14,7 +14,7 @@ and open the template in the editor.
  body {
     margin: 0;
     padding: 0;
-}
+ }
  .nav-bar {
     background-image: linear-gradient(#00D8D8, #03C0C1, #009C9D);
     height: 125px;
@@ -49,3 +49,7 @@ and open the template in the editor.
  .receipt-total-label-ui-grid {
      width: 30%;
  }
+ .ui-datatable * {
+     border: 0px !important;
+ }
+

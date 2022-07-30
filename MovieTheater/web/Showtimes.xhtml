@@ -15,13 +15,13 @@
             <h:form>
                 <p:dataTable 
                     value="#{movieTheaterBean.showShowtimesByMovie()}" var="showtime">
-                    <p:column headerText="Select">
-                        <p:commandButton value="Select" action="#{movieTheaterBean.getSelectSeat(showtime.showtime)}" ajax="false" />
+                    <p:column headerText="Showtimes for #{movieTheaterBean.movie.title}">
+                        <p:commandButton value="Seating" action="#{movieTheaterBean.getSelectSeat(showtime.showtime)}" ajax="false" />
                     </p:column>
-                    <p:column headerText="Showtime">
+                    <p:column>
                         <h:outputText value="#{showtime.showtime}" />
                     </p:column>
-                    <p:column headerText="Price">
+                    <p:column>
                         <h:outputText value="$#{showtime.price}" />
                     </p:column>
                 </p:dataTable>

@@ -13,8 +13,11 @@
     </h:head>
     <h:body>
         <div id="nav" />
+        <br/>
         <h:form>
+            <hr/>
             <div class="screen" >Screen</div>
+            <hr/>
             <div class="seating">
 
                 <!-- Row A -->
@@ -190,7 +193,9 @@
                     </h:selectManyCheckbox>
                 </div>  
             </div>
-            <div>
+            <br/>
+            <br/>
+            <div style="text-align: center">
                 <p:commandButton class="purchase-button" type="Submit" value="Purchase selected seat(s)" action="#{movieTheaterBean.calcNumOfSeats()}" ajax="false">
                     <!-- Add a validator to see if there were purchased seats -->
                 </p:commandButton>

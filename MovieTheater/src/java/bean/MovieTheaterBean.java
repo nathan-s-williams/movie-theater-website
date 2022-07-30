@@ -167,6 +167,13 @@ public class MovieTheaterBean implements Serializable {
     }
     
     /**************
+    Index.xhtml
+    **************/
+    public List<Movie> getAllMovies() {
+        return movieEJB.findAllMovies();
+    }
+    
+    /**************
     Theaters.xhtml
     **************/
     //Get Data table list

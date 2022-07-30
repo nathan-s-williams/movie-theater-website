@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 const nav = document.getElementById("nav")
-        .innerHTML='<nav class="nav-bar"><div class="title">Welcome to Javango</div><div class="nav-links"><a href="index.xhtml">Home</a><a href="Theaters.xhtml">Theaters</a><a href="Movies.xhtml">Movies</a><a href="AboutUs.xhtml">About Us</a></div></nav>';
+        .innerHTML='<nav class="nav-bar"><div class="title">Welcome to Javango</div><div class="nav-links"><a href="index.xhtml">Home</a><a href="AboutUs.xhtml">About Us</a></div></nav>';
 
 const footer = document.getElementById("footer")
         .innerHTML='<br/><br/><br/><br/><br/><hr/><div style="text-align: center">Advanced Java CS4336 Final Project<br />By Nathan Williams and Akito Minosoko</div>';

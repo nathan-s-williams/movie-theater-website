@@ -10,36 +10,49 @@
         <h:outputScript library = "js" name = "script.js" target="body"/>
     </h:head>
     <h:body>
-        <h:form>
-            <div id="nav"></div>
-            <div>
-                <h:outputLabel value="The chosen seats are: #{movieTheaterBean.stringSeatings}"/> <br/>
-                <h:outputLabel value="The number of seats are: #{movieTheaterBean.numOfChosenSeats}" /><br/>
-
-                <h:outputLabel value="Your total is $#{movieTheaterBean.calcTotal()}"/><br/><br/>
-
-                <h:outputLabel value="Enter the first name on the card: "/><br/>
-                <p:inputText value="#{paymentBean.firstName}" required="true" /> <br/><br/>
-
-
-                <h:outputLabel value="Enter the last name on the card: "/><br/>
-                <p:inputText value="#{paymentBean.lastName}" required="true" /><br/><br/>
-
-                <h:outputLabel value="Please enter your credit card number: "/><br/>
-                <p:inputText value="#{paymentBean.cardNumber}" required = "true" validator="#{paymentBean.validateCardNumber}">
-                    <p:keyFilter mask="pint"/>
-                </p:inputText><br/><br/>
-
-                <h:outputLabel value="Please enter the expiration date on the card (MM/YY):"/><br/>
-                <p:inputText value="#{paymentBean.expDate}" maxlength="5" required="true"/><br/><br/>
-
-                <h:outputLabel value="Please enter the CVV on the card:"/><br/>
-                <p:inputText value="#{paymentBean.cvv}" required="true" maxlength="3"/><br/><br/>
-            </div>
-            <div>
-                <p:commandButton type="Submit" value="Confirm purchase" action="Receipt.xhtml" ajax="false"/>
-            </div>
-        </h:form>
+        <div id="nav"></div>
+        <p style="font-size: 1.5em; padding-left: 50px">Your Ticket Information</p>
+        <hr/>
+        <div style="padding-left: 60px">
+        <h:outputLabel value="#{movieTheaterBean.movie.title}"/> <br/>
+        <h:outputLabel value="#{movieTheaterBean.theater.theaterName} | #{movieTheaterBean.theater.zipcode}"/><br/><br/>
+        <h:outputLabel value="#{movieTheaterBean.numOfChosenSeats} Seat(s): #{movieTheaterBean.stringSeatings}" /><br/>
+        <h:outputLabel value="Total is $#{movieTheaterBean.calcTotal()}"/><br/><br/><br/>
+        </div>
+        <hr/>
+        <p style="font-size: 1.5em; padding-left: 50px">Payment Details</p>
+        <hr/>
+        <div style="padding-left: 53px">
+            <h:form>
+                <h:panelGrid columns="3" cellpadding="7" cellspacing="10">
+                    <p:outputLabel value="First Name" />
+                    <p:inputText value="#{paymentBean.firstName}" required="true" placeholder="Required"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="Last Name" />
+                    <p:inputText value="#{paymentBean.lastName}" required="true" placeholder="Required"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="Credit Card Number" />
+                    <p:inputText id="creditcard" value="#{paymentBean.cardNumber}" placeholder="Required" validator="#{paymentBean.validateCardNumber}">
+                        <p:keyFilter mask="pint" />
+                    </p:inputText>
+                    <p:message for="creditcard" />
+                    
+                    <p:outputLabel value="Expiration (MM/YY)" />
+                    <p:inputText value="#{paymentBean.expDate}" required="true" placeholder="Required" maxlength="5"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="CVV" />
+                    <p:inputText value="#{paymentBean.cvv}" required="true" placeholder="Required" maxlength="3"/>
+                    <p:outputLabel />
+                    
+                </h:panelGrid>
+                <div style="padding-left: 17px">
+                    <p:commandButton type="Submit" value="Confirm purchase" action="Receipt.xhtml" ajax="false" update="@form"/>
+                </div>
+            </h:form>
+        </div>
         <div id="footer" />
     </h:body>
 </html>

@@ -12,15 +12,14 @@
     </h:head>
     <h:body>
         <div id="nav" />
-        Theaters in zipcode #{movieTheaterBean.theater.zipcode}
         <div class="card">    
             <f:view>
                 <h:form>
                     <p:dataTable value="#{movieTheaterBean.showTheatersByZipcode(movieTheaterBean.theater.zipcode)}" var="theater">
-                        <p:column headerText="Select">
-                            <p:commandButton value="Select" action="#{movieTheaterBean.getMoviesByTheater(theater.theaterId)}" ajax="false" />
+                        <p:column headerText="Theaters in #{movieTheaterBean.theater.zipcode}">
+                            <p:commandButton value="Movies" action="#{movieTheaterBean.getMoviesByTheater(theater.theaterId)}" ajax="false" />
                         </p:column>
-                        <p:column headerText="Theater">
+                        <p:column>
                             <h:outputText value="#{theater.theaterName}" />
                         </p:column>
                     </p:dataTable>

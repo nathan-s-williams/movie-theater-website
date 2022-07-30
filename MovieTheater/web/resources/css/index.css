@@ -36,3 +36,6 @@ body {
     color: white;
     text-decoration: none;
 }
+ .ui-datatable * {
+     border: 0px !important;
+ }

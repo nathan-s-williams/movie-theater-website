@@ -29,9 +29,17 @@ public class PaymentBean {
     private String firstName;
     private String lastName;
     private String expDate;
-    private int cvv;
+    private String cvv;
     
     public PaymentBean() { }
+
+    public ClientValidatorEJB getClientValidatorEJB() {
+        return clientValidatorEJB;
+    }
+
+    public void setClientValidatorEJB(ClientValidatorEJB clientValidatorEJB) {
+        this.clientValidatorEJB = clientValidatorEJB;
+    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -57,14 +65,14 @@ public class PaymentBean {
         this.lastName = lastName;
     }
 
-    public int getCvv() {
+    public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(int cvv) {
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
-
+    
     public String getExpDate() {
         return expDate;
     }
@@ -78,7 +86,7 @@ public class PaymentBean {
         
         if(!ClientValidatorEJB.validateCreditcard(cc)) {
             ((UIInput) comp).setValid(false);
-                FacesMessage errorMessage = new FacesMessage("Your credit card number must be 16 digits");
+                FacesMessage errorMessage = new FacesMessage("Creditcard must be 16 digits.");
                 context.addMessage(comp.getClientId(context), errorMessage);
         }
         
