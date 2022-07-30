@@ -14,15 +14,16 @@
         <div id="nav" />
             <f:view>
                 <div class="card">
-                    <h:form>
+                    <h:form styleClass="movie-data-table">
                         <p:dataTable value="#{movieTheaterBean.showMoviesByTheater()}" var="movie">
-                            <p:column headerText="Now Playing at #{movieTheaterBean.theater.theaterName}">
+                            <p:column headerText="Now Playing at #{movieTheaterBean.theater.theaterName}" width="500">
                                 <p:commandButton value="Showtimes" action="#{movieTheaterBean.getShowtimesByMovie(movie.movieId)}" ajax="false" />
                             </p:column>
-                            <p:column>
-                                <h:outputText value="#{movie.title}" />
+                            <p:column width="300">
+                                <p:graphicImage name="images/#{movie.image}" width="200" />
                             </p:column>
                             <p:column>
+                                <h:outputText value="#{movie.title}" style="font-size: 1.5em" /><br/><br/>
                                 <h:outputText value="#{movie.description}" />
                             </p:column>
                         </p:dataTable>

@@ -14,9 +14,9 @@
         <div id="nav" />
         <div class="card">    
             <f:view>
-                <h:form>
+                <h:form styleClass="theater-data-table">
                     <p:dataTable value="#{movieTheaterBean.showTheatersByZipcode(movieTheaterBean.theater.zipcode)}" var="theater">
-                        <p:column headerText="Theaters in #{movieTheaterBean.theater.zipcode}">
+                        <p:column headerText="Theaters in #{movieTheaterBean.theater.zipcode}" width="250">
                             <p:commandButton value="Movies" action="#{movieTheaterBean.getMoviesByTheater(theater.theaterId)}" ajax="false" />
                         </p:column>
                         <p:column>
