@@ -7,11 +7,17 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Movies</title>
+        <!--CSS and JS styling-->
         <h:outputStylesheet library="css" name="main.css" />
         <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
+        <!--Header-->
         <div id="nav" />
+            <!--            
+            Datatable with list of all movies for the chosen theater.
+            Lists the image, title and description.
+            -->
             <f:view>
                 <div class="card">
                     <h:form styleClass="movie-data-table">
@@ -30,6 +36,7 @@
                     </h:form>
                 </div>
             </f:view>
+        <!--Footer-->
         <div id="footer" />
     </h:body>
 </html>
