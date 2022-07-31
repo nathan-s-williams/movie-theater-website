@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+    <h:head>
+        <title>Payment Page</title>
+        <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library = "js" name = "script.js" target="body"/>
+    </h:head>
+    <h:body>
+        <div id="nav"></div>
+        <p style="font-size: 1.5em; padding-left: 50px">Your Ticket Information</p>
+        <hr/>
+        <div style="padding-left: 60px">
+        <h:outputLabel value="#{movieTheaterBean.movie.title}"/> <br/>
+        <h:outputLabel value="#{movieTheaterBean.theater.theaterName} | #{movieTheaterBean.theater.zipcode}"/><br/><br/>
+        <h:outputLabel value="#{movieTheaterBean.numOfChosenSeats} Seat(s): #{movieTheaterBean.stringSeatings}" /><br/>
+        <h:outputLabel value="Total is $#{movieTheaterBean.calcTotal()}"/><br/><br/><br/>
+        </div>
+        <hr/>
+        <p style="font-size: 1.5em; padding-left: 50px">Payment Details</p>
+        <hr/>
+        <div style="padding-left: 53px">
+            <h:form>
+                <h:panelGrid columns="3" cellpadding="7" cellspacing="10">
+                    <p:outputLabel value="First Name" />
+                    <p:inputText value="#{paymentBean.firstName}" required="true" placeholder="Required"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="Last Name" />
+                    <p:inputText value="#{paymentBean.lastName}" required="true" placeholder="Required"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="Credit Card Number" />
+                    <p:inputText id="creditcard" value="#{paymentBean.cardNumber}" placeholder="Required" validator="#{paymentBean.validateCardNumber}">
+                        <p:keyFilter mask="pint" />
+                    </p:inputText>
+                    <p:message for="creditcard" />
+                    
+                    <p:outputLabel value="Expiration (MM/YY)" />
+                    <p:inputText value="#{paymentBean.expDate}" required="true" placeholder="Required" maxlength="5"/>
+                    <p:outputLabel />
+                    
+                    <p:outputLabel value="CVV" />
+                    <p:inputText value="#{paymentBean.cvv}" required="true" placeholder="Required" maxlength="3"/>
+                    <p:outputLabel />
+                    
+                </h:panelGrid>
+                <div style="padding-left: 17px">
+                    <p:commandButton type="Submit" value="Confirm purchase" action="Receipt.xhtml" ajax="false" update="@form"/>
+                </div>
+            </h:form>
+        </div>
+        <div id="footer" />
+    </h:body>
+</html>
+

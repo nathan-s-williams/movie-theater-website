@@ -7,48 +7,66 @@
     <h:head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="resources/css/index.css" />
+        <h:outputStylesheet library="css" name="index.css" />
         <title>Javango</title>
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{movieTheaterBean.closeBean()}" />
         <div class="title-background">
+            <div style="height: 175px">
                 <div class="title">Welcome to Javango</div>
                 <div class="top-nav">
                     <h:link value="Home" outcome="index" />
-                    <h:link value="Theaters" outcome="Theaters" />
-                    <h:link value="Movies" outcome="Movies" />
-                    <h:link value="AboutUs" outcome="AboutUs" />
+                    <h:link value="About Us" outcome="AboutUs" />
                 </div>
-        </div>
-        <h:form>
-            <p style="text-align: center">SEARCH THEATER</p>
-            <div class="zipcode-search-bar">
-                <span class="ui-input-icon-left">
-                    <i class="pi pi-search" />
-                    <p:inputText 
-                        id="zip"
-                        placeholder="Zipcode" 
-                        value="#{theaterBean.theater.zipcode}" 
-                        validator="#{indexBean.validateZipcode}" 
-                        validatorMessage="Please enter a 5 digit number."
-                    >
-                        <p:keyFilter mask="pint"/>
-                    </p:inputText>                  
-                </span>
-                <p:message for="zip" />
-            </div><br/>
-            <div style="text-align: center">
-                <p:commandButton 
-                    type="Submit" 
-                    value="Search" 
-                    action="Theaters.xhtml" 
-                    ajax="false" 
-                    update="@form"
-                />
             </div>
-        </h:form><br/><br/>
+            <div style="padding-left: 40%">
+                <h:form>
+                    <div style="float: left; width: auto">
+                        <span class="ui-input-icon-left">
+                            <i class="pi pi-search" />
+                            <p:inputText 
+                                id="zip"
+                                placeholder="Theater Zipcode" 
+                                value="#{movieTheaterBean.theater.zipcode}" 
+                                validator="#{movieTheaterBean.validateZipcode}"
+                            >
+                                <p:keyFilter mask="pint"/>
+                            </p:inputText>                  
+                        </span>
+                        <p:message for="zip" />
+                    </div>
+                    <div style="float: left; width: auto">
+                        <p:commandButton 
+                            type="Submit" 
+                            value="Search" 
+                            action="Theaters.xhtml" 
+                            ajax="false" 
+                            update="@form"
+                        />
+                    </div>
+                </h:form>
+            </div>
+
+        </div>
+        <f:view>
+            <div class="card">
+                <h:form styleClass="movie-data-table">
+                    <p:dataTable value="#{movieTheaterBean.allMovies}" var="movie">
+                        <p:column headerText="Now Playing" width="300">
+                            <p:graphicImage name="images/#{movie.image}" width="200" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{movie.title}" style="font-size: 1.5em" /><br/><br/>
+                            <h:outputText value="#{movie.description}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </f:view>
     </h:body>
     <footer style="text-align: center">
+        <hr/>
         Advanced Java CS4336 Final Project<br />
         By Nathan Williams and Akito Minosoko
     </footer>

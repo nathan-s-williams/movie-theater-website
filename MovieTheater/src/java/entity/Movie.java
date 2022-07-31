@@ -19,9 +19,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name = "Movie.findAllMovies", query = "SELECT m FROM Movie m"),
     @NamedQuery(name = "Movie.findByMovieId", query = "SELECT m FROM Movie m WHERE m.movieId = :movieId"),
-    @NamedQuery(name = "Movie.findByTitle", query = "SELECT m FROM Movie m WHERE m.title = :title"),
-    @NamedQuery(name = "Movie.findByDescription", query = "SELECT m FROM Movie m WHERE m.description = :description"),
-    @NamedQuery(name = "Movie.findMoviesByTheater", query = "SELECT m FROM Movie m, Showtimes s WHERE m.movieId = s.showtimesPK.movieId AND s.showtimesPK.theaterId = :theaterId")
+    @NamedQuery(name = "Movie.findMoviesByTheater", query = "SELECT m FROM Movie m, MoviesAtTheater mt WHERE m.movieId = mt.moviesAtTheaterPK.movieId AND mt.moviesAtTheaterPK.theaterId = :theaterId")
 })
 public class Movie implements Serializable {
 
@@ -30,6 +28,7 @@ public class Movie implements Serializable {
     private String movieId;
     private String title;
     private String description;
+    private String image;
 
     public String getMovieId() {
         return movieId;
@@ -53,6 +52,14 @@ public class Movie implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     @Override

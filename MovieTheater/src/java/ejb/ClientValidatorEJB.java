@@ -17,8 +17,8 @@ public class ClientValidatorEJB {
         return true;
     }
     
-    public static boolean validateCreditcard(int cc) {
-        if(String.valueOf(cc).length() != 16)
+    public static boolean validateCreditcard(String cc) {
+        if(cc.length() != 16)
             return false;
         return true;
     }

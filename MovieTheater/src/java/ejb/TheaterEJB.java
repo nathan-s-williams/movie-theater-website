@@ -21,20 +21,9 @@ public class TheaterEJB {
     @PersistenceContext(unitName = "MovieTheaterPU")
     EntityManager em;
     
-    public List<Theater> findAllTheaters() {
-        return em.createNamedQuery("Theater.findAllTheaters", Theater.class)
-                .getResultList();
-    }
-    
     public Theater findByTheaterId(String theaterId) {
         return em.createNamedQuery("Theater.findByTheaterId", Theater.class)
                 .setParameter("theaterId", theaterId)
-                .getSingleResult();
-    }
-    
-    public Theater findByTheaterName(String name) {
-        return em.createNamedQuery("Theater.findByTheaterName", Theater.class)
-                .setParameter("theaterName", name)
                 .getSingleResult();
     }
     
@@ -43,12 +32,6 @@ public class TheaterEJB {
             return null;
         return em.createNamedQuery("Theater.findByTheaterZipcode", Theater.class)
                 .setParameter("zipcode", zipcode)
-                .getResultList();
-    }
-    
-    public List<Theater> findTheatersByMovie(String movieId) {
-        return em.createNamedQuery("Theater.findTheaterByMovie", Theater.class)
-                .setParameter("movieId", movieId)
                 .getResultList();
     }
 

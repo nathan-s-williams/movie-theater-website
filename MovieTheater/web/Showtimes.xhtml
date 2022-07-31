@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Showtimes</title>
+        <h:outputStylesheet library="css" name="main.css" />
+        <h:outputScript library="js" name="script.js" target="body"/>
+    </h:head>
+    <h:body>
+        <div id="nav" />
+        <br/>
+        <p:graphicImage name="images/#{movieTheaterBean.movie.image}" width="300" styleClass="center-image" />
+        <f:view>
+            <h:form styleClass="showtimes-data-table">
+                <p:dataTable 
+                    value="#{movieTheaterBean.showShowtimesByMovie()}" var="showtime">
+                    <p:column headerText="Showtimes" width="200">
+                        <p:commandButton value="Seating" action="#{movieTheaterBean.getSelectSeat(showtime.showtimesPK.showtime)}" ajax="false" />
+                    </p:column>
+                    <p:column width="300">
+                        <h:outputText value="#{showtime.showtimesPK.showtime}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="$#{showtime.price}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+        <div id="footer" />
+    </h:body>
+</html>
+

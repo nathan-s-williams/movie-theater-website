@@ -14,7 +14,7 @@ and open the template in the editor.
  body {
     margin: 0;
     padding: 0;
-}
+ }
  .nav-bar {
     background-image: linear-gradient(#00D8D8, #03C0C1, #009C9D);
     height: 125px;
@@ -23,7 +23,7 @@ and open the template in the editor.
     float: left;
     clear: none; 
     padding-top: 2%;
-    font-size: 2vw;
+    font-size: 2.5em;
     color: white;
     text-align: center;
     width: 33%;
@@ -32,7 +32,7 @@ and open the template in the editor.
     float: right;
     padding-top: 2.75%;
     width: 67%;
-    font-size: 1vw;
+    font-size: 1.25em;
     text-align: center;
  }
  .nav-links a {
@@ -40,3 +40,31 @@ and open the template in the editor.
     color: white;
     text-decoration: none;
  }
+ .center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+ .receipt-total-label-ui-grid {
+     width: 30%;
+ }
+ .ui-datatable * {
+     border: 0px !important;
+ }
+ 
+ .theater-data-table {
+    width: 700px;
+    margin: 0 auto;
+ }
+ .movie-data-table {
+    width: 1500px;
+    margin: 0 auto;
+ }
+ .showtimes-data-table {
+    width: 700px;
+    margin: 0 auto;
+ }
+ .ui-column-title {
+    font-size: 1.5em;
+ }
+

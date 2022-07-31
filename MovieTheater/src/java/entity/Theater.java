@@ -17,11 +17,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Theater.findAllTheaters", query = "SELECT t FROM Theater t"),
     @NamedQuery(name = "Theater.findByTheaterId", query = "SELECT t FROM Theater t WHERE t.theaterId = :theaterId"),
-    @NamedQuery(name = "Theater.findByTheaterName", query = "SELECT t FROM Theater t WHERE t.theaterName = :theaterName"),
-    @NamedQuery(name = "Theater.findByTheaterZipcode", query = "SELECT t FROM Theater t WHERE t.zipcode = :zipcode"),
-    @NamedQuery(name = "Theater.findTheaterByMovie", query = "SELECT t FROM Theater t, Showtimes s WHERE t.theaterId = s.showtimesPK.theaterId AND s.showtimesPK.movieId = :movieId")
+    @NamedQuery(name = "Theater.findByTheaterZipcode", query = "SELECT t FROM Theater t WHERE t.zipcode = :zipcode")
 })
 public class Theater implements Serializable {
 

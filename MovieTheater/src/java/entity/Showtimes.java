@@ -6,12 +6,11 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -21,8 +20,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Showtimes.findAllShowtimesAndTheatersByMovie", query = "SELECT s FROM Showtimes s, Theater t WHERE s.showtimesPK.theaterId = t.theaterId AND s.showtimesPK.movieId = :movieId"),
-    @NamedQuery(name = "Showtimes.findAllShowtimesAndMoviesByTheater", query = "SELECT s FROM Showtimes s, Movie m WHERE s.showtimesPK.movieId = m.movieId AND s.showtimesPK.theaterId = :theaterId")
+    @NamedQuery(name = "Showtimes.findShowtimes", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId"),
+    @NamedQuery(name = "Showtimes.findShowtimesWithDate", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId AND s.showtimesPK.showtime = :showtime")
 })
 public class Showtimes implements Serializable {
 
@@ -30,34 +29,22 @@ public class Showtimes implements Serializable {
     @EmbeddedId
     protected ShowtimesPK showtimesPK;
     private int price;
-    private Date showtime;
-    
+
     @ManyToOne
-    @MapsId("theaterId")
-    @JoinColumn(name="theaterId")
-    private Theater theater;
+    @JoinColumns({
+        @JoinColumn(name="theaterId", referencedColumnName="theaterId", insertable=false, updatable=false),
+        @JoinColumn(name="movieId", referencedColumnName="movieId", insertable=false, updatable=false)
+    })
+    private MoviesAtTheater moviesAtTheater;
+
+    public MoviesAtTheater getMoviesAtTheater() {
+        return moviesAtTheater;
+    }
+
+    public void setMoviesAtTheater(MoviesAtTheater moviesAtTheater) {
+        this.moviesAtTheater = moviesAtTheater;
+    }
     
-    @ManyToOne
-    @MapsId("movieId")
-    @JoinColumn(name="movieId")
-    private Movie movie;
-    
-    public Theater getTheater() {
-        return theater;
-    }
-
-    public void setTheater(Theater theater) {
-        this.theater = theater;
-    }
-
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
     public ShowtimesPK getShowtimesPK() {
         return showtimesPK;
     }
@@ -73,15 +60,7 @@ public class Showtimes implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    public Date getShowtime() {
-        return showtime;
-    }
-
-    public void setShowtime(Date showtime) {
-        this.showtime = showtime;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

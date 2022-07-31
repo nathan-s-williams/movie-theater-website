@@ -19,21 +19,22 @@ public class ShowtimesEJB {
 
     @PersistenceContext(unitName = "MovieTheaterPU")
     private EntityManager em;
-
     
-    
-    public List<Showtimes> findAllShowtimesAndTheatersByMovie(String movieId) {
-        return em.createNamedQuery("Showtimes.findAllShowtimesAndTheatersByMovie", Showtimes.class)
+    public List<Showtimes> findShowtimes(String theaterId, String movieId) {
+        return em.createNamedQuery("Showtimes.findShowtimes", Showtimes.class)
+                .setParameter("theaterId", theaterId)
                 .setParameter("movieId", movieId)
                 .getResultList();
     }
     
-    public List<Showtimes> findAllShowtimesAndMoviesByTheater(String theaterId) {
-        return em.createNamedQuery("Showtimes.findAllShowtimesAndMoviesByTheater", Showtimes.class)
+    public Showtimes findShowtimesWithDate(String theaterId, String movieId, java.util.Date showtime) {
+        return em.createNamedQuery("Showtimes.findShowtimesWithDate", Showtimes.class)
                 .setParameter("theaterId", theaterId)
-                .getResultList();
+                .setParameter("movieId", movieId)
+                .setParameter("showtime", showtime)
+                .getSingleResult();
     }
-
+    
     public void persist(Object object) {
         em.persist(object);
     }
