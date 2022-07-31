@@ -1,12 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
  */
 package ejb;
 
 import javax.ejb.Stateless;
-import entity.Movie;
 import entity.Theater;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,15 +15,20 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class TheaterEJB {
 
+    //Persistence injection
     @PersistenceContext(unitName = "MovieTheaterPU")
     EntityManager em;
     
+    //Find theater by id
+    //Return a single theater object
     public Theater findByTheaterId(String theaterId) {
         return em.createNamedQuery("Theater.findByTheaterId", Theater.class)
                 .setParameter("theaterId", theaterId)
                 .getSingleResult();
     }
     
+    //Find theaters by zipcode
+    //Return list of theaters
     public List<Theater> findByTheaterZipcode(String zipcode) {
         if(!ClientValidatorEJB.validateZipcode(zipcode))
             return null;
@@ -35,6 +37,7 @@ public class TheaterEJB {
                 .getResultList();
     }
 
+    //Persistence method
     public void persist(Object object) {
         em.persist(object);
     }

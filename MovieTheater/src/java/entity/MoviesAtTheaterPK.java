@@ -1,27 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Composite key object for the MoviesAtTheaterPK
+
+By Nathan Williams and Akito Minosoko
  */
 package entity;
 
+//import
 import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author nate
- */
+//Composite class for the MoviesAtTheater composite key
 @Embeddable
 public class MoviesAtTheaterPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    //Keys for the composite key
     @NotNull
     private String theaterId;
     @NotNull
     private String movieId;
 
+    //Constructors
     public MoviesAtTheaterPK() { }
 
     public MoviesAtTheaterPK(String theaterId, String movieId) {
@@ -29,6 +29,7 @@ public class MoviesAtTheaterPK implements Serializable {
         this.movieId = movieId;
     }
 
+    //Generate hashcode
     @Override
     public int hashCode() {
         int hash = 0;
@@ -37,6 +38,7 @@ public class MoviesAtTheaterPK implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -53,6 +55,7 @@ public class MoviesAtTheaterPK implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.ShowtimesPK[ theaterId=" + theaterId + " and movieId=" + movieId + " ]";

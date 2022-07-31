@@ -1,20 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Movie Entity with database attributes.
+
+By Nathan Williams and Akito Minosoko.
  */
 package entity;
 
+//imports
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-/**
- *
- * @author nate
- */
+//Named Queries for find all movies, find by the movie id and find by the theater.
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Movie.findAllMovies", query = "SELECT m FROM Movie m"),
@@ -24,44 +22,55 @@ import javax.persistence.NamedQuery;
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    //Primary key
     @Id
     private String movieId;
+    //Object attributes
     private String title;
     private String description;
     private String image;
 
+    //Get movie id
     public String getMovieId() {
         return movieId;
     }
 
+    //Set movie id
     public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
 
+    //Get title
     public String getTitle() {
         return title;
     }
 
+    //Set title
     public void setTitle(String title) {
         this.title = title;
     }
 
+    //Get description
     public String getDescription() {
         return description;
     }
 
+    //Set description
     public void setDescription(String description) {
         this.description = description;
     }
 
+    //Get image
     public String getImage() {
         return image;
     }
 
+    //Set image
     public void setImage(String image) {
         this.image = image;
     }
     
+    //Generate hash
     @Override
     public int hashCode() {
         int hash = 0;
@@ -69,6 +78,7 @@ public class Movie implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -82,6 +92,7 @@ public class Movie implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.Movie[ movieId=" + movieId + " ]";

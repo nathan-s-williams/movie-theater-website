@@ -1,10 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Showtimes entity
+
+By Nathan Williams and Akito Minosoko
  */
 package entity;
 
+//Imports
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -14,10 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-/**
- *
- * @author nate
- */
+//Named queries for finding showtimes and finding showtimes using the showtime date.
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Showtimes.findShowtimes", query = "SELECT s FROM Showtimes s WHERE s.showtimesPK.theaterId = :theaterId AND s.showtimesPK.movieId = :movieId"),
@@ -26,10 +24,14 @@ import javax.persistence.NamedQuery;
 public class Showtimes implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    //Composite key
     @EmbeddedId
     protected ShowtimesPK showtimesPK;
+    //Other attribute
     private int price;
 
+    //Many to one relationship to MoviesAtTheater entity.
     @ManyToOne
     @JoinColumns({
         @JoinColumn(name="theaterId", referencedColumnName="theaterId", insertable=false, updatable=false),
@@ -37,30 +39,37 @@ public class Showtimes implements Serializable {
     })
     private MoviesAtTheater moviesAtTheater;
 
+    //Get MoviesAtTheater
     public MoviesAtTheater getMoviesAtTheater() {
         return moviesAtTheater;
     }
 
+    //Set MoviesAtTheater
     public void setMoviesAtTheater(MoviesAtTheater moviesAtTheater) {
         this.moviesAtTheater = moviesAtTheater;
     }
     
+    //Get ShowtimesPK
     public ShowtimesPK getShowtimesPK() {
         return showtimesPK;
     }
 
+    //Set ShowtimesPK
     public void setShowtimesPK(ShowtimesPK showtimesPK) {
         this.showtimesPK = showtimesPK;
     }
 
+    //Get price
     public int getPrice() {
         return price;
     }
 
+    //Set price
     public void setPrice(int price) {
         this.price = price;
     }
     
+    //Generate hashcode
     @Override
     public int hashCode() {
         int hash = 0;
@@ -68,6 +77,7 @@ public class Showtimes implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -81,6 +91,7 @@ public class Showtimes implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.Showtimes[ showtimesPK=" + showtimesPK + " ]";
