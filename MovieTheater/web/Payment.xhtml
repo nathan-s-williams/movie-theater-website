@@ -3,22 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-      
+    
+    <!-- This is the Payment Page -->
     <h:head>
         <title>Payment Page</title>
+        <!-- Importing styling for header -->
         <h:outputStylesheet library="css" name="main.css"/>
+        <!-- Importing Javascript program for the footer -->
         <h:outputScript library = "js" name = "script.js" target="body"/>
     </h:head>
     <h:body>
+        <!--Navigation and Title div -->
         <div id="nav"></div>
+        <!-- Styling for the rest of the page -->
         <p style="font-size: 1.5em; padding-left: 50px">Your Ticket Information</p>
         <hr/>
         <div style="padding-left: 60px">
+            
+        <!-- Outputs the values for the chosen movie, theater, zipcode, 
+        number of seats, which seats, and the total payment through
+        the movieTheaterBean -->
+        
         <h:outputLabel value="#{movieTheaterBean.movie.title}"/> <br/>
         <h:outputLabel value="#{movieTheaterBean.theater.theaterName} | #{movieTheaterBean.theater.zipcode}"/><br/><br/>
         <h:outputLabel value="#{movieTheaterBean.numOfChosenSeats} Seat(s): #{movieTheaterBean.stringSeatings}" /><br/>
         <h:outputLabel value="Total is $#{movieTheaterBean.calcTotal()}"/><br/><br/><br/>
         </div>
+        
+        <!--This paragraph and div section is to let the customer
+        enter information to the paymentBean. Information includes
+        first name, last name, card number, expiration date, and
+        the CVV number.-->
+        
         <hr/>
         <p style="font-size: 1.5em; padding-left: 50px">Payment Details</p>
         <hr/>
@@ -48,11 +64,17 @@
                     <p:outputLabel />
                     
                 </h:panelGrid>
+                
+                <!--This command button will allow the customer to submit their
+                credit card information and forward them to the Receipt.xhtml
+                page-->
+                
                 <div style="padding-left: 17px">
                     <p:commandButton type="Submit" value="Confirm purchase" action="Receipt.xhtml" ajax="false" update="@form"/>
                 </div>
             </h:form>
         </div>
+        <!-- Div section for the footer -->
         <div id="footer" />
     </h:body>
 </html>
