@@ -11,8 +11,9 @@
         <title>Javango</title>
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{movieTheaterBean.closeBean()}" />
         <div class="title-background">
-            <div style="height: 200px">
+            <div style="height: 175px">
                 <div class="title">Welcome to Javango</div>
                 <div class="top-nav">
                     <h:link value="Home" outcome="index" />
