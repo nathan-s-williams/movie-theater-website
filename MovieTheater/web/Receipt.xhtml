@@ -5,11 +5,19 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Receipt Page</title>
+        <!-- Importing styling for header -->
         <h:outputStylesheet library="css" name="main.css"/>
+        <!-- Importing Javascript program for the footer -->
         <h:outputScript library = "js" name = "script.js" target="body"/>
     </h:head>
     <h:body>
+        <!--Navigation and Title div -->
         <div id="nav" />
+        
+        <!--Div section for the customer to display their first name,
+        last name, theater name, zipcode of the theater, showtime through
+        the movieTheaterBean and card number, expiration date, and cvv through
+        the paymentBean-->
         <div class="card center">
             <h:form>
                 <p style="font-size: 1.5vw; text-align: center">Thank you for your purchase!</p>
@@ -37,6 +45,10 @@
                     <p:outputLabel value="#{paymentBean.cvv}" />
                 </h:panelGrid>
                 <hr style="width: 400px" />
+                
+                <!--This section is to display the total cost
+                of the tickets through the movieTheaterBean-->
+                
                 <h:panelGrid style="margin: 0 auto; width: 400px" columns="2" cellpadding="0" cellspacing="10" columnClasses="receipt-total-label-ui-grid">
                     <p:outputLabel value="Total:" />
                     <p:outputLabel value="$#{movieTheaterBean.calcTotal()}" />
