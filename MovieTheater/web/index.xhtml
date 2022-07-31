@@ -7,10 +7,12 @@
     <h:head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Import style sheet-->
         <h:outputStylesheet library="css" name="index.css" />
         <title>Javango</title>
     </h:head>
     <h:body>
+        <!--header with title and links to pages-->
         <div class="title-background">
             <div style="height: 175px">
                 <div class="title">Welcome to Javango</div>
@@ -19,6 +21,11 @@
                     <h:link value="About Us" outcome="AboutUs" />
                 </div>
             </div>
+            <!--
+            Search bar for zipcode. Includes validation and message to
+            ensure that it is 5 digits long. Zip is used to populate the
+            theaters on the next page.
+            -->
             <div style="padding-left: 40%">
                 <h:form>
                     <div style="float: left; width: auto">
@@ -35,6 +42,10 @@
                         </span>
                         <p:message for="zip" />
                     </div>
+                    <!--                    
+                    Commmand button to navigate to next page. Refreshes form
+                    if zip validator is false.
+                    -->
                     <div style="float: left; width: auto">
                         <p:commandButton 
                             type="Submit" 
@@ -48,6 +59,7 @@
             </div>
 
         </div>
+        <!--Datatable for all movies. Includes fields for images title and pictures-->
         <f:view>
             <div class="card">
                 <h:form styleClass="movie-data-table">

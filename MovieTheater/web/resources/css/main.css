@@ -1,13 +1,9 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 22, 2022, 11:25:46 PM
-    Author     : nate
-*/
+Main styling for all pages except index.xhtml and SelectSeat.xhtml
 
+By Nathan Williams and Akito Minosoko
+*/
+/*General styling for page*/
  * {
     font-family: Arial, sans-serif;
 }
@@ -15,6 +11,7 @@ and open the template in the editor.
     margin: 0;
     padding: 0;
  }
+ /*Styling for nav bar*/
  .nav-bar {
     background-image: linear-gradient(#00D8D8, #03C0C1, #009C9D);
     height: 125px;
@@ -40,18 +37,21 @@ and open the template in the editor.
     color: white;
     text-decoration: none;
  }
+ /*Center image horizontally on page*/
  .center-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
  }
+ /*Styling for total section on Receipt page*/
  .receipt-total-label-ui-grid {
      width: 30%;
  }
+ /*General styling for datatable*/
  .ui-datatable * {
      border: 0px !important;
  }
- 
+ /*Custom styling for datatables on theater, movie and showtimes pages*/
  .theater-data-table {
     width: 700px;
     margin: 0 auto;

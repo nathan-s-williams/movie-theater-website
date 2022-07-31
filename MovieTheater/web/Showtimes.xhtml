@@ -6,13 +6,20 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Showtimes</title>
+        <!--CSS and JS styling-->
         <h:outputStylesheet library="css" name="main.css" />
         <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
+        <!--Header-->
         <div id="nav" />
         <br/>
+        <!--Image of chosen movie-->
         <p:graphicImage name="images/#{movieTheaterBean.movie.image}" width="300" styleClass="center-image" />
+        <!--            
+            Datatable with list of all showtimes for the chosen movie.
+            Lists the nav, showtime and price.
+            -->
         <f:view>
             <h:form styleClass="showtimes-data-table">
                 <p:dataTable 
@@ -29,6 +36,7 @@
                 </p:dataTable>
             </h:form>
         </f:view>
+        <!--Footer-->
         <div id="footer" />
     </h:body>
 </html>

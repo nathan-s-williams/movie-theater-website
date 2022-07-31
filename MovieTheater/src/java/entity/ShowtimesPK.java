@@ -1,23 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Primary key for Showtimes entity
  */
 package entity;
 
+//imports
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author nate
- */
+//Composite key with keys defined
 @Embeddable
 public class ShowtimesPK implements Serializable {
 
+    //Composite keys
     private static final long serialVersionUID = 1L;
     @NotNull
     private String theaterId;
@@ -26,38 +23,47 @@ public class ShowtimesPK implements Serializable {
     @NotNull
     private java.util.Date showtime;
 
+    //Constructor
     public ShowtimesPK() { }
 
+    //Get theaterid
     public String getTheaterId() {
         return theaterId;
     }
 
+    //Set theaterid
     public void setTheaterId(String theaterId) {
         this.theaterId = theaterId;
     }
 
+    //Get movieid
     public String getMovieId() {
         return movieId;
     }
 
+    //Set movieid
     public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
 
+    //Get showtime
     public Date getShowtime() {
         return showtime;
     }
 
+    //Set showtime
     public void setShowtime(Date showtime) {
         this.showtime = showtime;
     }
     
+    //Constructor
     public ShowtimesPK(String theaterId, String movieId, Date showtime) {
         this.theaterId = theaterId;
         this.movieId = movieId;
         this.showtime = showtime;
     }
 
+    //Generate hashcode
     @Override
     public int hashCode() {
         int hash = 0;
@@ -67,6 +73,7 @@ public class ShowtimesPK implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -86,6 +93,7 @@ public class ShowtimesPK implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.ShowtimesPK[ theaterId=" + theaterId + " and movieId=" + movieId + " and showtime=" + showtime + " ]";

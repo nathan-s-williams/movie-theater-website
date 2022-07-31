@@ -1,10 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+MoviesAtTheater entity which handles the many-to-many relationship between
+the Theaters and Movies.
+
+By Nathan Williams and Akito Minosoko
  */
 package entity;
 
+//Import
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -12,43 +14,49 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-/**
- *
- * @author nate
- */
+
 @Entity
 public class MoviesAtTheater implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    //Primary key
     @EmbeddedId
     protected MoviesAtTheaterPK moviesAtTheaterPK;
     
+    //Many to one relationship with theater entity using the theaterId.
     @ManyToOne
     @MapsId("theaterId")
     @JoinColumn(name="theaterId")
     private Theater theater;
     
+    //Many to one relationship movie entity using the movieId
     @ManyToOne
     @MapsId("movieId")
     @JoinColumn(name="movieId")
     private Movie movie;
     
+    //Get theater
     public Theater getTheater() {
         return theater;
     }
 
+    //Set theater
     public void setTheater(Theater theater) {
         this.theater = theater;
     }
 
+    //Get movie
     public Movie getMovie() {
         return movie;
     }
 
+    //Set movie
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
 
+    //Generate hashcode
     @Override
     public int hashCode() {
         int hash = 0;
@@ -56,6 +64,7 @@ public class MoviesAtTheater implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -69,6 +78,7 @@ public class MoviesAtTheater implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.Showtimes[ moviesAtTheaterPK=" + moviesAtTheaterPK + " ]";

@@ -5,16 +5,14 @@
  */
 package entity;
 
+//Imports
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-/**
- *
- * @author nate
- */
+//Named queries for find by theater id and find by theater zip
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Theater.findByTheaterId", query = "SELECT t FROM Theater t WHERE t.theaterId = :theaterId"),
@@ -23,35 +21,44 @@ import javax.persistence.NamedQuery;
 public class Theater implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    //Primary key
     @Id
     private String theaterId;
+    //Other attributes
     private String theaterName;
     private String zipcode;
 
+    //Get theaterid
     public String getTheaterId() {
         return theaterId;
     }
 
+    //Set theaterid
     public void setTheaterId(String theaterId) {
         this.theaterId = theaterId;
     }
-
+    
+    //Get theatername
     public String getTheaterName() {
         return theaterName;
     }
 
+    //Set theater name
     public void setTheaterName(String theaterName) {
         this.theaterName = theaterName;
     }
 
+    //Get zip
     public String getZipcode() {
         return zipcode;
     }
 
+    //Set zip
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
     
+    //Get hash
     @Override
     public int hashCode() {
         int hash = 0;
@@ -59,6 +66,7 @@ public class Theater implements Serializable {
         return hash;
     }
 
+    //Test equality of other object
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -72,6 +80,7 @@ public class Theater implements Serializable {
         return true;
     }
 
+    //Print toString string
     @Override
     public String toString() {
         return "entity.Theater[ theaterId=" + theaterId + " ]";

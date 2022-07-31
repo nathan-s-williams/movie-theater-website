@@ -7,12 +7,18 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Theaters</title>
+        <!--CSS and JS styling-->
         <h:outputStylesheet library="css" name="main.css" />
         <h:outputScript library="js" name="script.js" target="body"/>
     </h:head>
     <h:body>
+        <!--Header-->
         <div id="nav" />
         <div class="card">    
+            <!--            
+            Datatable with list of all theater for the chosen zipcode.
+            Lists the nav, zip and theater name.
+            -->
             <f:view>
                 <h:form styleClass="theater-data-table">
                     <p:dataTable value="#{movieTheaterBean.showTheatersByZipcode(movieTheaterBean.theater.zipcode)}" var="theater">
@@ -26,6 +32,7 @@
                 </h:form>
             </f:view>
         </div>
+        <!--Footer-->
         <div id="footer" />
     </h:body>
 </html>
