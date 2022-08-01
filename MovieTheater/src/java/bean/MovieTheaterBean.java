@@ -273,4 +273,13 @@ public class MovieTheaterBean implements Serializable {
         fc.getExternalContext().invalidateSession();
     }
     
+    public String newPurchase() {
+        try {
+            closeBean();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return "index.xhtml?faces-redirect=true";
+    }
+    
 }

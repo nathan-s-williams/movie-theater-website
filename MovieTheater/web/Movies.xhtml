@@ -22,7 +22,7 @@
                 <div class="card">
                     <h:form styleClass="movie-data-table">
                         <p:dataTable value="#{movieTheaterBean.showMoviesByTheater()}" var="movie">
-                            <p:column headerText="Now Playing at #{movieTheaterBean.theater.theaterName}" width="500">
+                            <p:column headerText="#{movieTheaterBean.theater.theaterName}" width="400">
                                 <p:commandButton value="Showtimes" action="#{movieTheaterBean.getShowtimesByMovie(movie.movieId)}" ajax="false" />
                             </p:column>
                             <p:column width="300">

@@ -53,6 +53,11 @@
                     <p:outputLabel value="Total:" />
                     <p:outputLabel value="$#{movieTheaterBean.calcTotal()}" />
                 </h:panelGrid>
+                <br/>
+                <br/>
+                <div style="text-align: center">
+                    <p:commandButton style="" value="New Purchase" action="#{movieTheaterBean.newPurchase()}" ajax="false" />
+                </div>
             </h:form>
         </div>
         <div id="footer" />
